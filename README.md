@@ -7,7 +7,7 @@ Statyczny prototyp HTML/CSS/JS flow zakupu pakietu **„4 kolejne weekendy”** 
 Każdy push na branch `main` wrzuca pliki na **https://ux.dev-jaaqob.pl/parkapp/**
 
 Workflow: `.github/workflows/deploy-ftp.yml`  
-Status deployów: repo → **Actions**
+Status deployów: repo → [**Actions**](https://github.com/patrykobniski/parkapp/actions)
 
 ### Jednorazowa konfiguracja (Secrets)
 
