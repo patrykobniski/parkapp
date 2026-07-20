@@ -47,14 +47,6 @@ export const ACCOUNT_VEHICLES = [
   { label: 'Skoda Octavia', plate: 'WW 98765' },
 ];
 
-export const VEHICLE_PACKAGE_HEADLINE = 'Parkuj dowolnym pojazdem z konta';
-
-export const VEHICLE_PACKAGE_LIST_TITLE = 'Te pojazdy mogą wjechać na wybrane miejsce';
-
-export function getVehiclePackageNote(spotLabel) {
-  return `Nie wybierasz auta przy zakupie pakietu. Każdy pojazd przypisany do konta może parkować na ${spotLabel}.`;
-}
-
 export function formatVehicleLine(vehicle) {
   return `${vehicle.label} · ${vehicle.plate}`;
 }

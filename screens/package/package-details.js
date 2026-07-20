@@ -1,7 +1,4 @@
-import {
-  CYCLIC_PACKAGE, ACCOUNT_VEHICLES,
-  VEHICLE_PACKAGE_HEADLINE, VEHICLE_PACKAGE_LIST_TITLE, getVehiclePackageNote,
-} from '../../scripts/mock-data.js';
+import { CYCLIC_PACKAGE, ACCOUNT_VEHICLES } from '../../scripts/mock-data.js';
 import { loadState, saveState, navTo } from '../../scripts/storage.js';
 import {
   resolvePackageStart, generateWeekendSlots, formatSlotRange,
@@ -18,9 +15,7 @@ const els = {
   customDate: document.getElementById('custom-date'),
   spotOptions: document.getElementById('spot-options'),
   checkBtn: document.getElementById('check-availability'),
-  vehicleNote: document.getElementById('vehicle-package-note'),
-  vehicleHeadline: document.getElementById('vehicle-package-headline'),
-  vehicleListTitle: document.getElementById('vehicle-package-list-title'),
+  vehicleSpotLabel: document.getElementById('vehicle-spot-label'),
   vehiclesList: document.getElementById('account-vehicles-list'),
 };
 
@@ -68,16 +63,8 @@ function render() {
     el.setAttribute('aria-checked', state.spotMode === mode ? 'true' : 'false');
   });
 
-  if (els.vehicleHeadline) {
-    els.vehicleHeadline.textContent = VEHICLE_PACKAGE_HEADLINE;
-  }
-
-  if (els.vehicleListTitle) {
-    els.vehicleListTitle.textContent = VEHICLE_PACKAGE_LIST_TITLE;
-  }
-
-  if (els.vehicleNote) {
-    els.vehicleNote.textContent = getVehiclePackageNote(getSpotLabelForCopy());
+  if (els.vehicleSpotLabel) {
+    els.vehicleSpotLabel.textContent = getSpotLabelForCopy();
   }
 
   if (els.vehiclesList) {
@@ -113,7 +100,6 @@ els.customDate?.addEventListener('change', () => {
   render();
 });
 
-// Min date = today
 if (els.customDate) {
   const t = new Date();
   els.customDate.min = t.toISOString().slice(0, 10);
