@@ -591,3 +591,225 @@
   margin: 0 0 16px;
 }
 
+/* Map — lista parkingów (Figma: Rezerwacja parkingu - Lista) */
+.map-placeholder--list {
+  background:
+    linear-gradient(180deg, rgba(246, 242, 235, 0.15) 0%, rgba(246, 242, 235, 0.5) 55%, rgba(255, 255, 255, 0.92) 100%),
+    repeating-linear-gradient(0deg, var(--b-base) 0, var(--b-base) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(90deg, var(--b-base) 0, var(--b-base) 1px, transparent 1px, transparent 32px),
+    var(--bg-soft-orange);
+}
+
+.map-pin {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--c-brand);
+  color: var(--c-text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-xs);
+}
+
+.map-pin--a { left: 18%; top: 28%; }
+.map-pin--b { left: 62%; top: 22%; }
+.map-pin--c { left: 42%; top: 38%; }
+.map-pin--active {
+  background: var(--c-brand);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.16);
+  z-index: 1;
+}
+
+.map-top-bar {
+  position: absolute;
+  top: 44px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+}
+
+.map-top-bar__back {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  border: 1px solid var(--b-base);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-xs);
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.map-time-chip {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 10px;
+  background: var(--bg-primary);
+  border: 1px solid var(--b-base);
+  border-radius: var(--radius-base);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.map-time-chip__icon { font-size: 1.4rem; }
+.map-time-chip__value {
+  flex: 1;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.map-time-chip__edit {
+  font-size: 1.4rem;
+  color: var(--c-text-subtle);
+}
+
+.map-controls {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2;
+}
+
+.map-controls__btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--b-base);
+  border-radius: var(--radius-base);
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-xs);
+  font-size: 1.6rem;
+}
+
+.map-controls__btn--dark {
+  background: var(--bg-dark);
+  color: var(--c-text-white);
+  border-color: var(--bg-dark);
+}
+
+.bottom-sheet--list {
+  max-height: 52%;
+  display: flex;
+  flex-direction: column;
+}
+
+.parking-list__heading {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--c-text-subtle);
+  margin: 0 0 12px;
+}
+
+.parking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  flex: 1;
+  padding-bottom: 8px;
+}
+
+.parking-list-card {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 0;
+  border: 1px solid var(--b-base);
+  border-radius: var(--radius-base);
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-xs);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--transition);
+}
+
+.parking-list-card:hover { border-color: var(--c-brand-subtle); }
+.parking-list-card:focus-visible {
+  outline: 2px solid var(--c-brand);
+  outline-offset: 2px;
+}
+
+.parking-list-card--highlighted {
+  border-width: 2px;
+  border-color: #ffa800;
+}
+
+.parking-list-card__main {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  padding: 8px 0 8px 8px;
+}
+
+.parking-list-card__pin {
+  width: 24px;
+  height: 51px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--c-brand);
+  font-size: 1.4rem;
+}
+
+.parking-list-card__body { min-width: 0; }
+
+.parking-list-card__name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.parking-list-card__address {
+  font-size: 1.4rem;
+  color: var(--c-text-subtle);
+  margin: 0 0 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.parking-list-card__badge { margin-top: 2px; }
+
+.parking-list-card__price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--b-base);
+  min-width: 72px;
+}
+
+.parking-list-card__price-total {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.parking-list-card__price-hour {
+  font-size: 1.2rem;
+  color: var(--c-text-subtle);
+}
+

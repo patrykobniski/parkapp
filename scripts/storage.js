@@ -18,6 +18,7 @@ const KEY = 'parkapp_package_state';
  *   reservationEnd: string|null,
  *   reservationDurationLabel: string|null,
  *   reservationPreset: 'weekend'|'24h'|'6h'|null,
+ *   selectedParkingId: string|null,
  * }} PackageState
  */
 
@@ -37,6 +38,7 @@ export function getDefaultState() {
     reservationEnd: null,
     reservationDurationLabel: null,
     reservationPreset: null,
+    selectedParkingId: null,
   };
 }
 

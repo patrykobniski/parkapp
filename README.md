@@ -41,10 +41,11 @@ Po włączeniu Pages (branch `main`, folder `/`) prototyp dostępny pod:
 ## Flow
 
 0. **Ustaw czas** — mapa + bottom sheet (termin zwykłej rezerwacji)
-1. **Szczegóły parkingu** — zwykła rezerwacja + pakiet cenowy + pakiet cykliczny
-2. **Szczegóły pakietu** — wybór startu, lista 4 terminów, miejsce, sprawdzenie dostępności
-3. **Stany dostępności** — loading / sukces / alternatywa / brak miejsc
-4. **Podsumowanie** → **Potwierdzenie**
+1. **Mapa z listą parkingów** — wyniki dla wybranego czasu, chip u góry do edycji terminu
+2. **Szczegóły parkingu** — zwykła rezerwacja + pakiet cenowy + pakiet cykliczny
+3. **Szczegóły pakietu** — wybór startu, lista 4 terminów, miejsce, sprawdzenie dostępności
+4. **Stany dostępności** — loading / sukces / alternatywa / brak miejsc
+5. **Podsumowanie** → **Potwierdzenie**
 
 „Zrezygnuj z pakietu cyklicznego” na wizytówce przywraca termin z kroku 0.
 

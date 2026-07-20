@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parkingi w okolicy — ParkApp</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame phone-frame--map">
+      <div class="status-bar" aria-hidden="true">
+        <span>9:41</span>
+        <span class="status-bar__icons">▮▮▮ WiFi 🔋</span>
+      </div>
+
+      <div class="map-placeholder map-placeholder--list" aria-hidden="true">
+        <span class="map-pin map-pin--a">P</span>
+        <span class="map-pin map-pin--b">P</span>
+        <span class="map-pin map-pin--c map-pin--active">P</span>
+      </div>
+
+      <div class="map-top-bar">
+        <a href="../reservation-setup/" class="map-top-bar__back" aria-label="Wróć do ustawienia czasu">←</a>
+        <a href="../reservation-setup/" class="map-time-chip" id="time-chip" aria-label="Edytuj czas parkowania">
+          <span class="map-time-chip__icon" aria-hidden="true">🕐</span>
+          <span class="map-time-chip__value" id="time-chip-value">61h</span>
+          <span class="map-time-chip__edit" aria-hidden="true">✎</span>
+        </a>
+      </div>
+
+      <div class="map-controls" aria-hidden="true">
+        <button type="button" class="map-controls__btn" disabled>☰</button>
+        <button type="button" class="map-controls__btn" disabled>◎</button>
+        <button type="button" class="map-controls__btn map-controls__btn--dark" disabled>⚙</button>
+      </div>
+
+      <div class="bottom-sheet bottom-sheet--list">
+        <div class="bottom-sheet__handle" aria-hidden="true"></div>
+        <p class="parking-list__heading" id="results-count">3 parkingi w okolicy</p>
+        <div class="parking-list" id="parking-list" role="list"></div>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="parking-list.js"></script>
+</body>
+</html>

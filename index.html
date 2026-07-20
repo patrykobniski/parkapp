@@ -13,11 +13,12 @@
 
     <p class="hub__group-title">Pełny flow (od ustawienia terminu)</p>
     <ul class="hub__list">
-      <li><a href="screens/reservation-setup/">0. Ustaw czas (mapa)</a></li>
-      <li><a href="screens/parking-detail/">1. Szczegóły parkingu + sekcja pakietów</a></li>
-      <li><a href="screens/package/details.html">2. Szczegóły wybranego pakietu</a></li>
-      <li><a href="screens/package/summary.html">3. Podsumowanie zakupu</a></li>
-      <li><a href="screens/package/confirmation.html">4. Potwierdzenie aktywacji</a></li>
+      <li><a href="screens/reservation-setup/">0. Ustaw czas (mapa + bottom sheet)</a></li>
+      <li><a href="screens/parking-list/">1. Mapa z listą parkingów</a></li>
+      <li><a href="screens/parking-detail/">2. Szczegóły parkingu + sekcja pakietów</a></li>
+      <li><a href="screens/package/details.html">3. Szczegóły wybranego pakietu</a></li>
+      <li><a href="screens/package/summary.html">4. Podsumowanie zakupu</a></li>
+      <li><a href="screens/package/confirmation.html">5. Potwierdzenie aktywacji</a></li>
     </ul>
 
     <p class="hub__group-title">Skróty (pojedyncze ekrany)</p>
@@ -32,9 +33,8 @@
 
     <div class="hub__note">
       <strong>UX — kontekst terminu:</strong><br>
-      Ekran „Ustaw czas” (mapa) definiuje <em>zwykłą rezerwację</em> widoczną u góry wizytówki.
-      Pakiet cykliczny to osobny produkt — po wyborze pasek się przełącza; „Zrezygnuj” przywraca termin z kroku 0.
-      „Lepsza stawka na ten termin” dotyczy tylko bieżącej rezerwacji (np. Całodobowy).
+      Flow: Ustaw czas → mapa z listą → wizytówka parkingu. Chip czasu u góry mapy wraca do edycji terminu.
+      Pakiet cykliczny to osobny produkt — „Zrezygnuj” przywraca termin z kroku 0.
     </div>
   </div>
 </body>

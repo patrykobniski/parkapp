@@ -8,7 +8,36 @@ export const PARKING = {
   address: 'ul. Warszawska 12, Warszawa',
   standardPrice: 52,
   standardPricePerHour: '2,60 zł/h',
+  hasCyclicPackage: true,
+  amenities: ['Na powietrzu', 'Strzeżony', 'Ładowanie EV'],
 };
+
+/** @type {Array<{ id: string, name: string, address: string, price: number, pricePerHour: string, hasCyclicPackage?: boolean, highlighted?: boolean }>} */
+export const PARKING_RESULTS = [
+  {
+    id: 'warszawska-12',
+    name: PARKING.name,
+    address: PARKING.address,
+    price: PARKING.standardPrice,
+    pricePerHour: PARKING.standardPricePerHour,
+    hasCyclicPackage: true,
+    highlighted: true,
+  },
+  {
+    id: 'grunwaldzka-24h',
+    name: 'Parking prywatny 24h',
+    address: 'ul. Grunwaldzka 12, Warszawa',
+    price: 10,
+    pricePerHour: '5,00 zł/h',
+  },
+  {
+    id: 'wola-galeria',
+    name: 'Wola Parking — Galeria',
+    address: 'ul. Marszałkowska 124F, Warszawa',
+    price: 8.99,
+    pricePerHour: '4,98 zł/h',
+  },
+];
 
 export const CYCLIC_PACKAGE = {
   id: 'weekend-4',
