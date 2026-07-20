@@ -2,7 +2,7 @@ import { loadState, saveState, navTo } from '../../scripts/storage.js';
 import {
   resolvePackageStart, generateWeekendSlots, formatPeriod, formatSlotRange,
 } from '../../scripts/package-dates.js';
-import { CYCLIC_PACKAGE, PARKING } from '../../scripts/mock-data.js';
+import { CYCLIC_PACKAGE, PARKING, ACCOUNT_VEHICLES, formatVehicleLine } from '../../scripts/mock-data.js';
 
 export function renderPackageContext() {
   const state = loadState();
@@ -29,11 +29,18 @@ export function fillSummaryRows() {
     'summary-spot': spot,
     'summary-parking': PARKING.name,
     'summary-address': PARKING.address,
+    'summary-vehicles': 'Dowolny z konta',
     'summary-price': '160 zł',
   };
   Object.entries(map).forEach(([id, text]) => {
     const node = document.getElementById(id);
     if (node) node.textContent = text;
   });
+
+  const vehiclesHint = document.getElementById('summary-vehicles-hint');
+  if (vehiclesHint) {
+    vehiclesHint.textContent = ACCOUNT_VEHICLES.map(formatVehicleLine).join(' · ');
+  }
+
   return { slots, spot, period };
 }

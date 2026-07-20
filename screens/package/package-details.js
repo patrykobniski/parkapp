@@ -1,4 +1,4 @@
-import { CYCLIC_PACKAGE, PARKING } from '../../scripts/mock-data.js';
+import { CYCLIC_PACKAGE, PARKING, ACCOUNT_VEHICLES, VEHICLE_PACKAGE_NOTE } from '../../scripts/mock-data.js';
 import { loadState, saveState, navTo } from '../../scripts/storage.js';
 import {
   resolvePackageStart, generateWeekendSlots, formatSlotRange,
@@ -15,6 +15,8 @@ const els = {
   customDate: document.getElementById('custom-date'),
   spotOptions: document.getElementById('spot-options'),
   checkBtn: document.getElementById('check-availability'),
+  vehicleNote: document.getElementById('vehicle-package-note'),
+  vehiclesList: document.getElementById('account-vehicles-list'),
 };
 
 function getSlots() {
@@ -54,6 +56,19 @@ function render() {
     el.classList.toggle('radio-option--selected', state.spotMode === mode);
     el.setAttribute('aria-checked', state.spotMode === mode ? 'true' : 'false');
   });
+
+  if (els.vehicleNote) {
+    els.vehicleNote.textContent = VEHICLE_PACKAGE_NOTE;
+  }
+
+  if (els.vehiclesList) {
+    els.vehiclesList.innerHTML = ACCOUNT_VEHICLES.map((vehicle) => `
+      <li class="account-vehicle">
+        <span class="account-vehicle__name">${vehicle.label}</span>
+        <span class="account-vehicle__plate">${vehicle.plate}</span>
+      </li>
+    `).join('');
+  }
 }
 
 document.querySelectorAll('[data-start-mode]').forEach((el) => {

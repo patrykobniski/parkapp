@@ -41,4 +41,17 @@ export const VEHICLE = {
   plate: 'WA 12345',
 };
 
+/** Pojazdy przypisane do konta użytkownika (mock) */
+export const ACCOUNT_VEHICLES = [
+  { label: 'Toyota Corolla', plate: 'WA 12345' },
+  { label: 'Skoda Octavia', plate: 'WW 98765' },
+];
+
+export const VEHICLE_PACKAGE_NOTE =
+  'Na tym parkingu możesz parkować dowolnym pojazdem dodanym do konta. Nie musisz wybierać konkretnego auta przy zakupie pakietu — wystarczy, że jest przypisany do Twojego profilu.';
+
+export function formatVehicleLine(vehicle) {
+  return `${vehicle.label} · ${vehicle.plate}`;
+}
+
 export const PAYMENT_METHOD = 'BLIK';

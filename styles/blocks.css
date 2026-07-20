@@ -395,3 +395,35 @@
   gap: 8px;
   margin-top: 16px;
 }
+
+.account-vehicles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.account-vehicle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--b-base);
+  border-radius: var(--radius-base);
+  background: var(--bg-secondary);
+}
+
+.account-vehicle__name {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.account-vehicle__plate {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--c-text-subtle);
+  letter-spacing: 0.04em;
+}
