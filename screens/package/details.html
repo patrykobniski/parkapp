@@ -94,23 +94,27 @@
           <h3 class="detail-section__heading" id="vehicles-heading">Pojazdy</h3>
 
           <div class="vehicles-panel">
-            <p class="vehicles-panel__message">
-              <strong>Parkuj dowolnym pojazdem z konta.</strong>
-              Nie wybierasz auta przy zakupie pakietu. Każdy pojazd przypisany do Twojego konta może parkować na
+            <p class="vehicles-panel__lead">
+              Parkuj dowolnym pojazdem dodanym do konta na
               <strong id="vehicle-spot-label">Miejsce 12</strong>.
+              Nie wybierasz auta przy zakupie pakietu.
             </p>
-
-            <p class="vehicles-panel__list-title">Pojazdy przypisane do Twojego konta</p>
-            <ul class="vehicles-panel__items" id="account-vehicles-list" aria-label="Pojazdy przypisane do konta">
-              <li class="vehicles-panel__item">
-                <span class="vehicles-panel__item-name">Toyota Corolla</span>
-                <span class="vehicles-panel__item-plate">WA 12345</span>
-              </li>
-              <li class="vehicles-panel__item">
-                <span class="vehicles-panel__item-name">Skoda Octavia</span>
-                <span class="vehicles-panel__item-plate">WW 98765</span>
-              </li>
-            </ul>
+            <button type="button" class="link-text vehicles-panel__toggle" id="toggle-vehicles" aria-expanded="false" aria-controls="vehicles-list-wrap">
+              Zobacz dodane pojazdy
+            </button>
+            <div class="vehicles-panel__list" id="vehicles-list-wrap" hidden>
+              <p class="vehicles-panel__list-note">Wszystkie pojazdy dodane na Twoim koncie:</p>
+              <ul class="vehicles-panel__items" id="account-vehicles-list" aria-label="Pojazdy przypisane do konta">
+                <li class="vehicles-panel__item">
+                  <span class="vehicles-panel__item-name">Toyota Corolla</span>
+                  <span class="vehicles-panel__item-plate">WA 12345</span>
+                </li>
+                <li class="vehicles-panel__item">
+                  <span class="vehicles-panel__item-name">Skoda Octavia</span>
+                  <span class="vehicles-panel__item-plate">WW 98765</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 

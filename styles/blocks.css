@@ -105,6 +105,11 @@
   border-top: 1px solid var(--b-light-medium);
 }
 
+.pricing-package__row-value {
+  font-weight: 500;
+  text-align: right;
+}
+
 .pricing-package__foot-btn {
   color: var(--c-text-white);
   font-size: 1.4rem;
@@ -298,24 +303,35 @@
   padding: 16px;
 }
 
-.vehicles-panel__message {
+.vehicles-panel__lead {
   font-size: 1.4rem;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--c-text-body);
-  margin: 0 0 16px;
+  margin: 0 0 8px;
 }
 
-.vehicles-panel__message strong {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--c-text);
-  margin-bottom: 6px;
+.vehicles-panel__toggle {
+  margin: 0 0 4px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
-.vehicles-panel__list-title {
-  font-size: 1.3rem;
-  font-weight: 500;
+.vehicles-panel__toggle:hover { color: var(--c-brand); }
+.vehicles-panel__toggle:focus-visible {
+  outline: 2px solid var(--c-brand);
+  outline-offset: 2px;
+}
+
+.vehicles-panel__list {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--b-base);
+}
+
+.vehicles-panel__list-note {
+  font-size: 1.2rem;
   color: var(--c-text-subtle);
   margin: 0 0 10px;
 }

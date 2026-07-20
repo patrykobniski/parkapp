@@ -118,4 +118,14 @@ document.getElementById('back-link')?.addEventListener('click', (e) => {
   navTo('../parking-detail/index.html');
 });
 
+const toggleVehiclesBtn = document.getElementById('toggle-vehicles');
+const vehiclesListWrap = document.getElementById('vehicles-list-wrap');
+
+toggleVehiclesBtn?.addEventListener('click', () => {
+  const open = vehiclesListWrap?.hidden;
+  if (vehiclesListWrap) vehiclesListWrap.hidden = !open;
+  toggleVehiclesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  toggleVehiclesBtn.textContent = open ? 'Ukryj pojazdy' : 'Zobacz dodane pojazdy';
+});
+
 render();
