@@ -36,7 +36,11 @@ PARKING_RESULTS.forEach((parking) => {
       e.preventDefault();
       return;
     }
-    saveState({ selectedParkingId: parking.id });
+    saveState({
+      selectedParkingId: parking.id,
+      packageSelected: false,
+      packageId: null,
+    });
   });
 
   list.appendChild(item);

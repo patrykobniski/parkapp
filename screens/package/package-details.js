@@ -95,7 +95,6 @@ els.checkBtn?.addEventListener('click', () => {
 
 document.getElementById('back-link')?.addEventListener('click', (e) => {
   e.preventDefault();
-  saveState({ packageSelected: true, packageId: CYCLIC_PACKAGE.id });
   navTo('../parking-detail/index.html');
 });
 

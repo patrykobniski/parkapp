@@ -7,7 +7,9 @@ import {
   formatPackageBar, getReservationRange,
 } from '../../scripts/package-dates.js';
 
-const state = loadState();
+let state = loadState();
+// Wizytówka = kontekst zwykłej rezerwacji. Pakiet konfigurujesz na osobnym ekranie (package/details).
+state = saveState({ packageSelected: false, packageId: null });
 const regularRange = getReservationRange(state);
 
 function renderTimeBar() {
@@ -35,8 +37,6 @@ function renderCyclicCard() {
   const selected = state.packageSelected && state.packageId === CYCLIC_PACKAGE.id;
   card.classList.toggle('cyclic-package--selected', selected);
   card.setAttribute('aria-pressed', selected ? 'true' : 'false');
-  const dismiss = document.getElementById('dismiss-package');
-  if (dismiss) dismiss.hidden = !selected;
 }
 
 function renderPricingCard() {
@@ -65,32 +65,14 @@ document.getElementById('time-bar')?.addEventListener('click', () => {
   }
 });
 
-document.getElementById('cyclic-package-card')?.addEventListener('click', () => {
-  saveState({
-    packageSelected: true,
-    packageId: CYCLIC_PACKAGE.id,
-    pricingPackageApplied: false,
-    availabilityResult: null,
-    confirmedSpot: null,
-  });
+document.getElementById('cyclic-package-card')?.addEventListener('click', (e) => {
+  if (e.target.closest('#cyclic-cta')) return;
   navTo('../package/details.html');
 });
 
 document.getElementById('cyclic-cta')?.addEventListener('click', (e) => {
   e.stopPropagation();
-  saveState({
-    packageSelected: true,
-    packageId: CYCLIC_PACKAGE.id,
-    pricingPackageApplied: false,
-  });
   navTo('../package/details.html');
-});
-
-document.getElementById('dismiss-package')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  Object.assign(state, saveState({ packageSelected: false, packageId: null }));
-  renderTimeBar();
-  renderCyclicCard();
 });
 
 renderTimeBar();
