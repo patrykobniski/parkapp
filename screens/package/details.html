@@ -92,11 +92,18 @@
 
         <section class="detail-section" aria-labelledby="vehicles-heading">
           <h3 class="detail-section__heading" id="vehicles-heading">Pojazdy</h3>
-          <div class="info-box" role="note">
-            <p class="info-box__text" id="vehicle-package-note"></p>
+
+          <div class="vehicles-panel">
+            <div class="vehicles-panel__intro">
+              <p class="vehicles-panel__headline" id="vehicle-package-headline"></p>
+              <p class="vehicles-panel__lead" id="vehicle-package-note"></p>
+            </div>
+
+            <div class="vehicles-panel__list">
+              <p class="vehicles-panel__list-title">Pojazdy na Twoim koncie</p>
+              <ul class="vehicles-panel__items" id="account-vehicles-list" aria-label="Pojazdy przypisane do konta"></ul>
+            </div>
           </div>
-          <p class="field-hint" style="margin-bottom:12px">Pojazdy przypisane do Twojego konta:</p>
-          <ul class="account-vehicles" id="account-vehicles-list" aria-label="Pojazdy przypisane do konta"></ul>
         </section>
 
         <section class="detail-section" aria-labelledby="price-heading">

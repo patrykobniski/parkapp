@@ -391,7 +391,45 @@
   margin-top: 16px;
 }
 
-.account-vehicles {
+.vehicles-panel {
+  border: 1px solid var(--b-base);
+  border-radius: var(--radius-base);
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.vehicles-panel__intro {
+  padding: 14px 16px;
+}
+
+.vehicles-panel__headline {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: var(--c-text);
+}
+
+.vehicles-panel__lead {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--c-text-body);
+  margin: 0;
+}
+
+.vehicles-panel__list {
+  border-top: 1px solid var(--b-base);
+  background: var(--bg-secondary);
+  padding: 12px 16px 14px;
+}
+
+.vehicles-panel__list-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--c-text-subtle);
+  margin: 0 0 10px;
+}
+
+.vehicles-panel__items {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -400,25 +438,29 @@
   gap: 8px;
 }
 
-.account-vehicle {
+.vehicles-panel__item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 14px;
+  padding: 10px 12px;
   border: 1px solid var(--b-base);
   border-radius: var(--radius-base);
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
-.account-vehicle__name {
+.vehicles-panel__item-name {
   font-size: 1.4rem;
   font-weight: 500;
 }
 
-.account-vehicle__plate {
-  font-size: 1.4rem;
+.vehicles-panel__item-plate {
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--c-text-subtle);
   letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--b-base);
 }

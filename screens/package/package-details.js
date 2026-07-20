@@ -1,4 +1,7 @@
-import { CYCLIC_PACKAGE, PARKING, ACCOUNT_VEHICLES, VEHICLE_PACKAGE_NOTE } from '../../scripts/mock-data.js';
+import {
+  CYCLIC_PACKAGE, PARKING, ACCOUNT_VEHICLES,
+  VEHICLE_PACKAGE_HEADLINE, getVehiclePackageNote,
+} from '../../scripts/mock-data.js';
 import { loadState, saveState, navTo } from '../../scripts/storage.js';
 import {
   resolvePackageStart, generateWeekendSlots, formatSlotRange,
@@ -16,8 +19,15 @@ const els = {
   spotOptions: document.getElementById('spot-options'),
   checkBtn: document.getElementById('check-availability'),
   vehicleNote: document.getElementById('vehicle-package-note'),
+  vehicleHeadline: document.getElementById('vehicle-package-headline'),
   vehiclesList: document.getElementById('account-vehicles-list'),
 };
+
+function getSpotLabelForCopy() {
+  if (state.spotMode === 'best') return 'najlepszym dostępnym miejscu';
+  if (state.spotMode === 'pick') return 'wybranym miejscu';
+  return state.spotLabel || CYCLIC_PACKAGE.preferredSpot;
+}
 
 function getSlots() {
   const start = resolvePackageStart(state.startMode, state.customDate);
