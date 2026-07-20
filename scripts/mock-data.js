@@ -13,8 +13,8 @@ export const PARKING = {
 export const CYCLIC_PACKAGE = {
   id: 'weekend-4',
   name: '4 kolejne weekendy',
-  hoursLabel: 'Pt 18:00 – pon 7:00',
-  hoursFull: 'Piątek 18:00 – poniedziałek 7:00',
+  hoursLabel: 'Pt 18:00 do pon 7:00',
+  hoursFull: 'Piątek 18:00 do poniedziałku 7:00',
   reservationCount: 4,
   periodDays: 28,
   totalPrice: 160,
@@ -47,10 +47,12 @@ export const ACCOUNT_VEHICLES = [
   { label: 'Skoda Octavia', plate: 'WW 98765' },
 ];
 
-export const VEHICLE_PACKAGE_HEADLINE = 'Bez wyboru pojazdu';
+export const VEHICLE_PACKAGE_HEADLINE = 'Parkuj dowolnym pojazdem z konta';
+
+export const VEHICLE_PACKAGE_LIST_TITLE = 'Te pojazdy mogą wjechać na wybrane miejsce';
 
 export function getVehiclePackageNote(spotLabel) {
-  return `Każdy pojazd przypisany do konta może parkować na ${spotLabel}. Nie musisz wybierać auta przy zakupie pakietu.`;
+  return `Nie wybierasz auta przy zakupie pakietu. Każdy pojazd przypisany do konta może parkować na ${spotLabel}.`;
 }
 
 export function formatVehicleLine(vehicle) {

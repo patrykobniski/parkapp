@@ -1,6 +1,6 @@
 import {
-  CYCLIC_PACKAGE, PARKING, ACCOUNT_VEHICLES,
-  VEHICLE_PACKAGE_HEADLINE, getVehiclePackageNote,
+  CYCLIC_PACKAGE, ACCOUNT_VEHICLES,
+  VEHICLE_PACKAGE_HEADLINE, VEHICLE_PACKAGE_LIST_TITLE, getVehiclePackageNote,
 } from '../../scripts/mock-data.js';
 import { loadState, saveState, navTo } from '../../scripts/storage.js';
 import {
@@ -20,6 +20,7 @@ const els = {
   checkBtn: document.getElementById('check-availability'),
   vehicleNote: document.getElementById('vehicle-package-note'),
   vehicleHeadline: document.getElementById('vehicle-package-headline'),
+  vehicleListTitle: document.getElementById('vehicle-package-list-title'),
   vehiclesList: document.getElementById('account-vehicles-list'),
 };
 
@@ -67,15 +68,23 @@ function render() {
     el.setAttribute('aria-checked', state.spotMode === mode ? 'true' : 'false');
   });
 
+  if (els.vehicleHeadline) {
+    els.vehicleHeadline.textContent = VEHICLE_PACKAGE_HEADLINE;
+  }
+
+  if (els.vehicleListTitle) {
+    els.vehicleListTitle.textContent = VEHICLE_PACKAGE_LIST_TITLE;
+  }
+
   if (els.vehicleNote) {
-    els.vehicleNote.textContent = VEHICLE_PACKAGE_NOTE;
+    els.vehicleNote.textContent = getVehiclePackageNote(getSpotLabelForCopy());
   }
 
   if (els.vehiclesList) {
     els.vehiclesList.innerHTML = ACCOUNT_VEHICLES.map((vehicle) => `
-      <li class="account-vehicle">
-        <span class="account-vehicle__name">${vehicle.label}</span>
-        <span class="account-vehicle__plate">${vehicle.plate}</span>
+      <li class="vehicles-panel__item">
+        <span class="vehicles-panel__item-name">${vehicle.label}</span>
+        <span class="vehicles-panel__item-plate">${vehicle.plate}</span>
       </li>
     `).join('');
   }
