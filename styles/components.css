@@ -320,6 +320,20 @@
   border-bottom: none;
 }
 
+.summary-row--inline {
+  padding-top: 0;
+  border-bottom: none;
+}
+
+.summary-vehicles-panel {
+  margin: 8px 0 12px;
+  padding: 12px 14px;
+}
+
+.summary-vehicles-panel .vehicles-panel__lead {
+  margin-top: 8px;
+}
+
 .link-text {
   font-size: 1.4rem;
   font-weight: 500;

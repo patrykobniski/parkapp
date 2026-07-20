@@ -2,13 +2,13 @@ import { loadState, saveState, navTo } from '../../scripts/storage.js';
 import {
   resolvePackageStart, generateWeekendSlots, formatPeriod, formatSlotRange,
 } from '../../scripts/package-dates.js';
-import { CYCLIC_PACKAGE, PARKING, ACCOUNT_VEHICLES, formatVehicleLine } from '../../scripts/mock-data.js';
+import { CYCLIC_PACKAGE, PARKING, ACCOUNT_VEHICLES } from '../../scripts/mock-data.js';
 
 export function renderPackageContext() {
   const state = loadState();
   const start = resolvePackageStart(state.startMode, state.customDate);
   const slots = generateWeekendSlots(start, 4, 18, 7);
-  const spot = state.confirmedSpot || CYCLIC_PACKAGE.preferredSpot;
+  const spot = state.confirmedSpot || state.spotLabel || CYCLIC_PACKAGE.preferredSpot;
   return { state, start, slots, spot, period: formatPeriod(start, slots) };
 }
 
@@ -19,12 +19,23 @@ export function fillReservationsList(containerId) {
   el.innerHTML = slots.map((s) => `<li class="reservation-list__item"><span class="reservation-list__num">${s.index}</span><span>${formatSlotRange(s)}</span></li>`).join('');
 }
 
+function renderVehicleList(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = ACCOUNT_VEHICLES.map((vehicle) => `
+    <li class="vehicles-panel__item">
+      <span class="vehicles-panel__item-name">${vehicle.label}</span>
+      <span class="vehicles-panel__item-plate">${vehicle.plate}</span>
+    </li>
+  `).join('');
+}
+
 export function fillSummaryRows() {
   const { slots, spot, period } = renderPackageContext();
   const map = {
     'summary-package': 'Pakiet: 4 kolejne weekendy',
     'summary-period': period,
-    'summary-hours': 'pt 18:00 – pon 7:00',
+    'summary-hours': 'pt 18:00 do pon 7:00',
     'summary-count': '4',
     'summary-spot': spot,
     'summary-parking': PARKING.name,
@@ -37,10 +48,10 @@ export function fillSummaryRows() {
     if (node) node.textContent = text;
   });
 
-  const vehiclesHint = document.getElementById('summary-vehicles-hint');
-  if (vehiclesHint) {
-    vehiclesHint.textContent = ACCOUNT_VEHICLES.map(formatVehicleLine).join(' · ');
-  }
+  const spotLabel = document.getElementById('summary-vehicle-spot');
+  if (spotLabel) spotLabel.textContent = spot;
+
+  renderVehicleList('summary-vehicles-list');
 
   return { slots, spot, period };
 }

@@ -24,8 +24,26 @@
           <div class="summary-row"><span class="summary-row__label">Miejsce</span><span class="summary-row__value" id="summary-spot"></span></div>
           <div class="summary-row"><span class="summary-row__label">Parking</span><span class="summary-row__value" id="summary-parking"></span></div>
           <div class="summary-row"><span class="summary-row__label">Adres</span><span class="summary-row__value" id="summary-address"></span></div>
-          <div class="summary-row"><span class="summary-row__label">Pojazdy</span><span class="summary-row__value" id="summary-vehicles"></span></div>
-          <p class="field-hint" id="summary-vehicles-hint" style="margin:-4px 0 12px"></p>
+
+          <div class="summary-vehicles-panel vehicles-panel">
+            <div class="summary-row summary-row--inline">
+              <span class="summary-row__label">Pojazdy</span>
+              <span class="summary-row__value" id="summary-vehicles">Dowolny z konta</span>
+            </div>
+            <p class="vehicles-panel__lead" id="summary-vehicles-lead">
+              Parkuj dowolnym pojazdem dodanym do konta na
+              <strong id="summary-vehicle-spot">Miejsce 12</strong>.
+              Nie wybierasz auta przy zakupie pakietu.
+            </p>
+            <button type="button" class="link-text vehicles-panel__toggle" id="toggle-summary-vehicles" aria-expanded="false" aria-controls="summary-vehicles-list-wrap">
+              Zobacz dodane pojazdy
+            </button>
+            <div class="vehicles-panel__list" id="summary-vehicles-list-wrap" hidden>
+              <p class="vehicles-panel__list-note">Wszystkie pojazdy dodane na Twoim koncie:</p>
+              <ul class="vehicles-panel__items" id="summary-vehicles-list" aria-label="Pojazdy przypisane do konta"></ul>
+            </div>
+          </div>
+
           <div class="summary-row"><span class="summary-row__label">Płatność</span><span class="summary-row__value">BLIK</span></div>
           <div class="summary-row summary-row--total"><span class="summary-row__label">Cena całkowita</span><span class="summary-row__value" id="summary-price"></span></div>
         </div>
@@ -35,7 +53,7 @@
       </div>
       <div class="phone-frame__footer">
         <a href="confirmation.html" class="btn btn--primary" id="buy-package">Kup pakiet za 160 zł</a>
-        <p class="field-hint" style="text-align:center;margin:8px 0 0">Płatność BLIK — ekran w istniejącym designie (poza tym prototypem).</p>
+        <p class="field-hint" style="text-align:center;margin:8px 0 0">Płatność BLIK · ekran w istniejącym designie (poza tym prototypem).</p>
         <div class="home-indicator" aria-hidden="true"></div>
       </div>
     </div>
@@ -44,6 +62,7 @@
     import { fillSummaryRows, fillReservationsList } from './package-shared.js';
     fillSummaryRows();
     fillReservationsList('summary-terms-list');
+
     document.getElementById('toggle-terms')?.addEventListener('click', () => {
       const list = document.getElementById('summary-terms-list');
       const btn = document.getElementById('toggle-terms');
@@ -51,6 +70,16 @@
       list.hidden = !open;
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.textContent = open ? 'Ukryj terminy' : 'Zobacz wszystkie terminy';
+    });
+
+    const toggleVehiclesBtn = document.getElementById('toggle-summary-vehicles');
+    const vehiclesListWrap = document.getElementById('summary-vehicles-list-wrap');
+
+    toggleVehiclesBtn?.addEventListener('click', () => {
+      const open = vehiclesListWrap?.hidden;
+      if (vehiclesListWrap) vehiclesListWrap.hidden = !open;
+      toggleVehiclesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggleVehiclesBtn.textContent = open ? 'Ukryj pojazdy' : 'Zobacz dodane pojazdy';
     });
   </script>
 </body>
