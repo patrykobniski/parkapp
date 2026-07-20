@@ -116,64 +116,6 @@ export function getRegularTimeRange(referenceDate = new Date()) {
   return { start, end };
 }
 
-/**
- * @param {'weekend'|'24h'|'6h'} preset
- * @param {Date} [referenceDate]
- */
-export function buildReservationPreset(preset, referenceDate = new Date()) {
-  if (preset === 'weekend') {
-    const range = getRegularTimeRange(referenceDate);
-    return {
-      ...range,
-      durationLabel: '61h',
-      preset: 'weekend',
-    };
-  }
-  if (preset === '24h') {
-    const start = new Date(referenceDate);
-    start.setSeconds(0, 0);
-    if (start.getMinutes() > 0) start.setHours(start.getHours() + 1);
-    start.setMinutes(0, 0, 0);
-    const end = new Date(start);
-    end.setHours(end.getHours() + 24);
-    return {
-      start,
-      end,
-      durationLabel: '24h',
-      preset: '24h',
-    };
-  }
-  const start = new Date(referenceDate);
-  start.setSeconds(0, 0);
-  if (start.getMinutes() > 0) start.setHours(start.getHours() + 1);
-  start.setMinutes(0, 0, 0);
-  const end = new Date(start);
-  end.setHours(end.getHours() + 6);
-  return {
-    start,
-    end,
-    durationLabel: '6h',
-    preset: '6h',
-  };
-}
-
-/**
- * @param {{ reservationStart?: string|null, reservationEnd?: string|null, reservationPreset?: string|null }} state
- * @param {Date} [referenceDate]
- */
-export function getReservationRange(state = {}, referenceDate = new Date()) {
-  if (state.reservationStart && state.reservationEnd) {
-    return {
-      start: new Date(state.reservationStart),
-      end: new Date(state.reservationEnd),
-      durationLabel: state.reservationDurationLabel || '',
-      preset: state.reservationPreset || null,
-    };
-  }
-  const fallback = buildReservationPreset('weekend', referenceDate);
-  return fallback;
-}
-
 export function formatRegularBar(start, end) {
   return `${formatDateShort(start)}, ${pad(start.getHours())}:${pad(start.getMinutes())} → ${formatDateShort(end)}, ${pad(end.getHours())}:${pad(end.getMinutes())}`;
 }

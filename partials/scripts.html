@@ -1,0 +1,20 @@
+<!-- ============================================
+     #SCRIPTS — skrypty na końcu <body>
+     
+     Kolejność:
+     1. CDN libraries (AOS, Swiper jeśli używane)
+     2. Główny script.js (ES Module - importuje moduły z scripts/modules/)
+     3. comments.js (artefakt makiety - NIE trafia do produkcji WP)
+     ============================================ -->
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<!-- Swiper (jeśli projekt używa) -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Główny skrypt - ES Module - importuje moduły -->
+<script type="module" src="/script.js"></script>
+
+<!-- Komentarze klientowe - artefakt etapu makiety -->
+<script src="/comments.js" data-project-id="[BRAK: nazwa-projektu]" defer></script>

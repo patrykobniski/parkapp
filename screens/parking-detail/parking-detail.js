@@ -4,13 +4,12 @@ import {
 } from '../../scripts/storage.js';
 import {
   resolvePackageStart, generateWeekendSlots, formatRegularBar,
-  formatPackageBar, getReservationRange,
+  formatPackageBar, getRegularTimeRange,
 } from '../../scripts/package-dates.js';
 
 let state = loadState();
-// Wizytówka = kontekst zwykłej rezerwacji. Pakiet konfigurujesz na osobnym ekranie (package/details).
 state = saveState({ packageSelected: false, packageId: null });
-const regularRange = getReservationRange(state);
+const regularRange = getRegularTimeRange();
 
 function renderTimeBar() {
   const bar = document.getElementById('time-bar');
@@ -60,8 +59,6 @@ function renderPricingCard() {
 document.getElementById('time-bar')?.addEventListener('click', () => {
   if (state.packageSelected) {
     navTo('../package/details.html');
-  } else {
-    navTo('../reservation-setup/');
   }
 });
 

@@ -1,0 +1,169 @@
+================================================================
+                    MAKIETA — START
+================================================================
+
+
+1. ZMIEŃ NAZWĘ TEGO FOLDERU NA NAZWĘ PROJEKTU
+   Tylko małe litery, cyfry, myślniki.
+   Np. makieta-klient-xyz
+
+
+2. WRZUĆ DO FOLDERU SWÓJ copy.docx
+   (Opcjonalnie: logo.svg lub logo.png.)
+
+
+3. OTWÓRZ FOLDER W CURSORZE
+   Cmd/Ctrl + L → nowy chat → Model: Claude Sonnet 4.6
+   lub Opus 4.6/4.7 → Tryb: Agent
+   Skopiuj BLOK PONIŻEJ i wklej do chatu. Enter.
+
+
+----------------------------------------------------------------
+                 PROMPT DO WKLEJENIA
+----------------------------------------------------------------
+
+Zbuduj makietę funkcjonalną UX zgodnie z plikami w tym folderze.
+
+KROK 1 — Przeczytaj w tej kolejności:
+1. .cursorrules
+2. makieta-spec.md (szczególnie sekcja 19 — mapowanie na WP/ACF)
+3. copy.docx (jeśli nie możesz otworzyć .docx bezpośrednio,
+   skonwertuj przez pandoc lub python-docx do _working/copy.md)
+4. architektura.docx — jeśli istnieje. Jeśli nie — wywnioskuj
+   strukturę z copy.docx wg sekcji 16 spec i zapisz decyzje
+   w _working/architektura-wywnioskowana.md.
+
+KROK 2 — Przed kodowaniem:
+- Wypisz _working/mapa-sekcji.md (wszystkie strony + sekcje
+  + skąd wzięte teksty)
+- Potwierdź język (PL/EN) na podstawie copy.docx
+- Sprawdź czy w folderze jest logo.svg/logo.png — jeśli tak,
+  skopiuj do assets/
+- Jeśli wnioskujesz strukturę i decyzje są niejednoznaczne
+  (np. one-pager vs multi-page) — zadaj JEDNO zbiorcze pytanie
+  PRZED kodowaniem
+
+KROK 3 — Zbuduj makietę zgodnie z makieta-spec.md.
+Stack: statyczny HTML + native CSS (per blok) + vanilla JS (ES Modules).
+Biblioteki przez CDN: AOS (animacje), Swiper (slider), DM Sans.
+Bez frameworków, bez npm, bez SCSS, bez build stepu.
+
+WAŻNE: każda sekcja makiety = osobny blok ACF u deweloperów.
+- HTML: <section class="hero"> ... </section>
+- CSS: styles/blocks/_hero.css (1:1 z assets/src/sass/blocks/_hero.scss)
+- JS (gdy potrzebny): scripts/modules/hero.js
+- Klasy BEM po nazwie bloku (.hero, .hero__title), NIE .section
+- Wszystkie kolory przez var(--c-*), var(--bg-*), var(--b-*)
+  z nazwami zgodnymi ze SCSS variables dewelopera
+- Zaokrąglenia przez var(--global-radius) = 8px
+- Układy sekcji NIESZABLONOWE — rotuj warianty wg sekcji 14 spec
+  (bento, zig-zag, listy edytorskie, asymetria; max 2 sekcje
+  z rzędu "centered header + grid")
+
+KROK 3a — System partials (KLUCZOWE - przeczytaj FRAGMENTS.md):
+Wspólne części (header, footer, mobile-menu, trust-bar, modal,
+scripts) edytuj WYŁĄCZNIE w folderze partials/.
+- Edytuj partials/<nazwa>.html
+- Uruchom: python scripts/build-html.py
+- Skrypt propaguje zmiany na wszystkie pliki HTML w projekcie
+- NIE edytuj headera/stopki bezpośrednio w pojedynczych podstronach
+- NIE używaj JS do synchronizacji nav
+- Pełna instrukcja: FRAGMENTS.md
+
+KROK 4 — Podepnij moduł komentarzy (sekcja 9 spec):
+- Skopiuj comments/comments.js do roota jako comments.js
+- comments.js jest już w partials/scripts.html - tylko uzupełnij
+  atrybut data-project-id="NAZWA_FOLDERU"
+- Uruchom python scripts/build-html.py żeby propagować
+
+KROK 5 — Animacje AOS (sekcja 10 spec):
+- Każda <section> (poza hero) ma data-aos="fade-up"
+- Kluczowe elementy WEWNĄTRZ sekcji (nagłówek, karty, kolumny)
+  mają własne data-aos="fade-up" z narastającym data-aos-delay
+  (krok 80ms: 0/80/160/240, max 320ms) — lekkie wejście od dołu
+- Elementy hero też dostają stagger; slajdy Swipera NIE
+- AOS init: { once: true, delay: 90, duration: 450,
+              offset: 160, easing: 'ease-out' }
+- BEZ filter: blur(), BEZ glow, BEZ magnetic hover
+
+KROK 6 — Sprawdź checklist z sekcji 15 spec. Każdy punkt.
+
+KROK 7 — Wygeneruj KODER-HANDOFF.md w roocie projektu
+(sekcja 19 spec). Lista bloków + mapowanie plików +
+sugerowane pola ACF per blok + krok po kroku adaptacja.
+
+KROK 7a — Wygeneruj INICJALIZACJA.md w roocie projektu
+(sekcja 20 spec). To prompt startowy każdej KOLEJNEJ sesji
+poprawek w Cursorze: kolejność czytania dokumentacji, żelazne
+zasady, wymóg raportowania zmian, kontekst projektu.
+
+KROK 8 — Wypisz _working/braki-tresci.md z placeholderami.
+
+KROK 9 — Uruchom serwer:
+  npx serve .
+(albo poproś mnie o uruchomienie Live Server w VSCode)
+Podaj URL podglądu.
+
+ZASADY NADRZĘDNE:
+- NIE wymyślaj treści. WYŁĄCZNIE teksty z copy.docx.
+- NIE pomijaj żadnej sekcji.
+- Tylko skala szarości — bez kolorów brandowych.
+- Tylko DM Sans.
+- Wszystkie obrazy to zaślepki .placeholder-media.
+- NIE używaj filter: blur() ani glow w reveal.
+- NIE używaj magnetic hover (button podążający za kursorem).
+- NIE twórz package.json — bez build stepu, bez SCSS.
+- Każda sekcja = osobny plik CSS w styles/blocks/_<nazwa>.css
+- Klasy BEM po nazwie bloku (.hero, nie .section--hero)
+- comments.js MUSI być w roocie.
+
+----------------------------------------------------------------
+                CURSOR ZROBI RESZTĘ
+----------------------------------------------------------------
+
+Zwykle 5–15 minut. Po zakończeniu otrzymasz adres lokalny
+(np. http://localhost:3000) z gotową makietą.
+
+W prawym dolnym rogu pojawi się przycisk "Komentarze":
+   Klik 1 — podgląd (widzisz piny)
+   Klik 2 — dodawanie (klikasz w stronę, piszesz, Enter)
+   Klik 3 — wyłączony
+Działa też na telefonie: tap dodaje pin, formularz pojawia się
+jako arkusz na dole ekranu, piny można przeciągać palcem.
+
+Pisanie jako zespół: pin → trzy kropki (⋮) →
+"Skomentuj jako JAAQOB".
+
+
+----------------------------------------------------------------
+                COŚ NIE DZIAŁA?
+----------------------------------------------------------------
+
+KOMENTARZY NIE WIDAĆ
+Sprawdź czy makieta działa przez http://localhost (serwer),
+NIE przez plik z dysku (file://). Przeglądarka blokuje API
+gdy otwierasz HTML bezpośrednio.
+
+CURSOR ZACZYNA INSTALOWAĆ npm / robić package.json
+Wpisz: "Stop. Bez npm, bez SCSS. Stack to czysty HTML +
+native CSS (per blok) + vanilla JS ES Modules,
+biblioteki przez CDN."
+
+SEKCJE POJAWIAJĄ SIĘ Z ROZMYCIEM / POŚWIATĄ
+Wpisz: "Usuń efekt blur/glow z animacji wjazdu sekcji.
+AOS ma dawać tylko opacity i translateY."
+
+
+----------------------------------------------------------------
+                DALSZY PIPELINE
+----------------------------------------------------------------
+
+Makieta jest zaprojektowana tak, żeby zespół deweloperski
+mógł ją w 1-2 godziny rozparcelować na bloki ACF w naszym
+starter-themie WordPress. Plik KODER-HANDOFF.md (Cursor
+go wygeneruje) zawiera mapowanie i krok-po-kroku instrukcję
+dla nich.
+
+Po akceptacji klienta — git push na GitHub, deploy gdziekolwiek
+(GitHub Pages, Netlify drop), pokaz klientowi. Po finalnej
+akceptacji deweloperzy biorą kod i robią produkcyjny WP.

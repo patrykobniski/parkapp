@@ -1,0 +1,77 @@
+<!-- ============================================
+     #SITE HEADER — desktop nav + mega-menu
+     
+     Uzupełnij:
+     - <img alt="[BRAK: nazwa firmy]"> i src="/assets/logo.svg" (lub .png)
+     - <ul> z nav items - dla każdego linku wstaw href i tekst z copy
+     - Mega-menu (.nav-mega) - tylko jeśli projekt ma 6+ podstron w jednym filarze
+     - CTA - jeden mocny przycisk po prawej (Schedule, Get Quote, Contact...)
+     
+     Konwencja klas:
+     - .site-header - całość
+     - .nav-item - pojedyncza pozycja menu
+     - .nav-item--has-mega - pozycja z mega-menu (6+ podstron)
+     - .nav-item--has-mini - pozycja z mini-dropdownem (2-5 podstron)
+     - .site-header__cta - prawy CTA button
+     ============================================ -->
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="site-header__logo" aria-label="[BRAK: nazwa firmy] — Home">
+      <img src="/assets/logo.svg" alt="[BRAK: nazwa firmy]" width="140" height="36">
+    </a>
+
+    <nav class="site-header__nav" aria-label="Main navigation">
+      <ul class="site-header__nav-list">
+
+        <!-- Przykład pozycji z mega-menu (6+ podstron, kolumny) -->
+        <!--
+        <li class="nav-item nav-item--has-mega">
+          <button class="nav-item__link" aria-haspopup="true" aria-expanded="false">
+            [Nazwa]
+            <svg class="nav-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-mega" role="menu">
+            <div class="container nav-mega__inner">
+              [kolumny z linkami]
+            </div>
+          </div>
+        </li>
+        -->
+
+        <!-- Przykład pozycji z mini-dropdownem (2-5 podstron) -->
+        <!--
+        <li class="nav-item nav-item--has-mini">
+          <button class="nav-item__link" aria-haspopup="true" aria-expanded="false">
+            [Nazwa]
+            <svg class="nav-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-mini" role="menu">
+            <a href="/[slug]" class="nav-mini__link">[BRAK: link]</a>
+          </div>
+        </li>
+        -->
+
+        <!-- Przykład pojedynczej pozycji -->
+        <!--
+        <li class="nav-item">
+          <a class="nav-item__link" href="/[slug]">[BRAK: nazwa]</a>
+        </li>
+        -->
+
+        <!-- [BRAK: wypełnić listę nav items z copy.docx / architektura.docx] -->
+
+      </ul>
+    </nav>
+
+    <!-- Główny CTA (1 sztuka, mocny przycisk) -->
+    <a href="/kontakt" class="btn btn--primary site-header__cta">
+      [BRAK: tekst CTA, np. "Schedule a Consultation"]
+    </a>
+
+    <!-- Hamburger - widoczny tylko na mobile -->
+    <button class="site-header__hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>

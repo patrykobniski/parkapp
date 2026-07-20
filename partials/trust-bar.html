@@ -1,0 +1,38 @@
+<!-- ============================================
+     #TRUST BAR — opcjonalny pasek nad headerem
+     
+     Używaj gdy projekt wymaga:
+     - eksponowanego telefonu (np. kancelarie prawne, medyczne, usługowe B2C)
+     - dostępności (A/A+/A++ - wymóg prawny w niektórych branżach US)
+     - drugorzędnych linków (Insights, Case Studies, Testimonials)
+     
+     Jeśli projekt nie potrzebuje trust-bara - usuń ten plik
+     i usuń markery `<!-- BEGIN PARTIAL: trust-bar -->` z plików HTML.
+     ============================================ -->
+
+<div class="trust-bar">
+  <div class="container trust-bar__inner">
+    <div class="trust-bar__left">
+      <!-- Telefon (jeśli projekt eksponuje) -->
+      <a href="tel:[BRAK: telefon]" class="trust-bar__phone">
+        <span class="trust-bar__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        [BRAK: telefon]
+      </a>
+    </div>
+    <div class="trust-bar__right">
+      <!-- Drugorzędne linki - usuń jeśli niepotrzebne -->
+      <!-- <a href="/[link]" class="trust-bar__secondary-links">[BRAK: link]</a> -->
+
+      <!-- Disability tools (A/A+/A++) - usuń jeśli projekt nie wymaga -->
+      <!--
+      <div class="trust-bar__a11y" role="group" aria-label="Adjust text size">
+        <button class="trust-bar__a11y-btn trust-bar__a11y-btn--current" data-size="normal" onclick="setTextSize('normal')" aria-label="Normal text size" title="Normal text">A</button>
+        <button class="trust-bar__a11y-btn" data-size="large" onclick="setTextSize('large')" aria-label="Larger text size" title="Larger text">A+</button>
+        <button class="trust-bar__a11y-btn" data-size="larger" onclick="setTextSize('larger')" aria-label="Largest text size" title="Largest text">A++</button>
+      </div>
+      -->
+    </div>
+  </div>
+</div>
