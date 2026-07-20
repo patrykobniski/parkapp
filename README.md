@@ -2,6 +2,28 @@
 
 Statyczny prototyp HTML/CSS/JS flow zakupu pakietu **„4 kolejne weekendy”** w aplikacji ParkApp.
 
+## Deploy automatyczny (GitHub Actions → FTP)
+
+Każdy push na branch `main` wrzuca pliki na **https://ux.dev-jaaqob.pl/parkapp/**
+
+Workflow: `.github/workflows/deploy-ftp.yml`  
+Status deployów: repo → **Actions**
+
+### Jednorazowa konfiguracja (Secrets)
+
+W GitHub: **Settings → Secrets and variables → Actions → New repository secret**
+
+| Secret | Wartość |
+|--------|---------|
+| `FTP_SERVER` | `ftp.dev-jaaqob.pl` |
+| `FTP_USERNAME` | `ux_jaaqob@ux.dev-jaaqob.pl` |
+| `FTP_PASSWORD` | *(hasło FTP — tylko w Secrets, nigdy w repo)* |
+
+Po zapisaniu secretów: **Actions → Deploy to UX server (FTP) → Run workflow**  
+(albo zrób dowolny push na `main`).
+
+---
+
 ## Podgląd lokalny
 
 ```bash

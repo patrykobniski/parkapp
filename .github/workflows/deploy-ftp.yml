@@ -1,0 +1,41 @@
+name: Deploy to UX server (FTP)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ftp-parkapp
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          local-dir: ./
+          server-dir: /parkapp/
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/.gitignore
+            **/.cursorrules
+            **/README.md
+            **/FRAGMENTS.md
+            **/START.txt
+            **/makieta-spec.md
+            **/partials/**
+            **/comments/**
+            **/scripts/build-html.py
+            **/_working/**
