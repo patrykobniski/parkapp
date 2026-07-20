@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podsumowanie pakietu — ParkApp</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame">
+      <div class="status-bar" aria-hidden="true"><span>9:41</span><span class="status-bar__icons">▮▮▮ WiFi 🔋</span></div>
+      <div class="screen-header">
+        <a href="details.html" class="screen-header__back" aria-label="Wróć">←</a>
+        <h1 class="screen-header__title">Podsumowanie</h1>
+      </div>
+      <div class="phone-frame__scroll container" style="padding-bottom:100px">
+        <h2 class="section-title" id="summary-package">Pakiet: 4 kolejne weekendy</h2>
+
+        <div class="summary-block">
+          <div class="summary-row"><span class="summary-row__label">Okres</span><span class="summary-row__value" id="summary-period"></span></div>
+          <div class="summary-row"><span class="summary-row__label">Godziny</span><span class="summary-row__value" id="summary-hours"></span></div>
+          <div class="summary-row"><span class="summary-row__label">Liczba rezerwacji</span><span class="summary-row__value" id="summary-count"></span></div>
+          <div class="summary-row"><span class="summary-row__label">Miejsce</span><span class="summary-row__value" id="summary-spot"></span></div>
+          <div class="summary-row"><span class="summary-row__label">Parking</span><span class="summary-row__value" id="summary-parking"></span></div>
+          <div class="summary-row"><span class="summary-row__label">Adres</span><span class="summary-row__value" id="summary-address"></span></div>
+          <div class="summary-row"><span class="summary-row__label">Pojazd</span><span class="summary-row__value">Toyota Corolla · WA 12345</span></div>
+          <div class="summary-row"><span class="summary-row__label">Płatność</span><span class="summary-row__value">BLIK</span></div>
+          <div class="summary-row summary-row--total"><span class="summary-row__label">Cena całkowita</span><span class="summary-row__value" id="summary-price"></span></div>
+        </div>
+
+        <button type="button" class="link-text" id="toggle-terms" aria-expanded="false">Zobacz wszystkie terminy</button>
+        <ol class="reservation-list" id="summary-terms-list" hidden style="margin-top:12px"></ol>
+      </div>
+      <div class="phone-frame__footer">
+        <a href="confirmation.html" class="btn btn--primary" id="buy-package">Kup pakiet za 160 zł</a>
+        <p class="field-hint" style="text-align:center;margin:8px 0 0">Płatność BLIK — ekran w istniejącym designie (poza tym prototypem).</p>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import { fillSummaryRows, fillReservationsList } from './package-shared.js';
+    fillSummaryRows();
+    fillReservationsList('summary-terms-list');
+    document.getElementById('toggle-terms')?.addEventListener('click', () => {
+      const list = document.getElementById('summary-terms-list');
+      const btn = document.getElementById('toggle-terms');
+      const open = list.hidden;
+      list.hidden = !open;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? 'Ukryj terminy' : 'Zobacz wszystkie terminy';
+    });
+  </script>
+</body>
+</html>

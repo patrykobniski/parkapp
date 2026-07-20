@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 kolejne weekendy — ParkApp</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame">
+      <div class="status-bar" aria-hidden="true">
+        <span>9:41</span>
+        <span class="status-bar__icons">▮▮▮ WiFi 🔋</span>
+      </div>
+
+      <div class="screen-header">
+        <a href="../parking-detail/index.html" class="screen-header__back" id="back-link" aria-label="Wróć">←</a>
+        <h1 class="screen-header__title">Pakiet weekendowy</h1>
+      </div>
+
+      <div class="phone-frame__scroll container" style="padding-bottom:100px">
+        <header style="padding-top:8px">
+          <h2 class="section-title" style="font-size:2rem">4 kolejne weekendy</h2>
+          <p class="section-lead">Zarezerwuj miejsce w każdy weekend przez najbliższe 28 dni.</p>
+        </header>
+
+        <div class="info-box" role="note">
+          <h3 class="info-box__title">Jak działa ten pakiet?</h3>
+          <p class="info-box__text">To nie jest ciągła rezerwacja na 28 dni. Miejsce będzie zarezerwowane dla Ciebie podczas czterech wskazanych weekendów – od piątku wieczorem do poniedziałku rana.</p>
+        </div>
+
+        <section class="detail-section" aria-labelledby="start-heading">
+          <h3 class="detail-section__heading" id="start-heading">Kiedy chcesz rozpocząć?</h3>
+          <div role="radiogroup" aria-label="Moment rozpoczęcia pakietu">
+            <div class="radio-option radio-option--selected" data-start-mode="nearest" role="radio" aria-checked="true" tabindex="0">
+              <div class="radio-option__input" aria-hidden="true"></div>
+              <div>
+                <div class="radio-option__label">Od najbliższego weekendu</div>
+              </div>
+            </div>
+            <div class="radio-option" data-start-mode="next" role="radio" aria-checked="false" tabindex="0">
+              <div class="radio-option__input" aria-hidden="true"></div>
+              <div>
+                <div class="radio-option__label">Od kolejnego weekendu</div>
+              </div>
+            </div>
+            <div class="radio-option" data-start-mode="custom" role="radio" aria-checked="false" tabindex="0">
+              <div class="radio-option__input" aria-hidden="true"></div>
+              <div>
+                <div class="radio-option__label">Wybierz datę rozpoczęcia</div>
+              </div>
+            </div>
+          </div>
+          <div class="date-input-wrap" id="custom-date-wrap" hidden>
+            <label for="custom-date" class="sr-only">Data rozpoczęcia</label>
+            <input type="date" id="custom-date" name="custom-date">
+          </div>
+          <p class="start-hint" id="start-hint" aria-live="polite"></p>
+        </section>
+
+        <section class="detail-section" aria-labelledby="hours-heading">
+          <h3 class="detail-section__heading" id="hours-heading">Godziny parkowania</h3>
+          <p style="font-size:1.6rem;font-weight:500;margin:0 0 4px">Piątek 18:00 – poniedziałek 7:00</p>
+          <p class="field-hint">Godziny obowiązujące na tym parkingu. Nie można ich edytować.</p>
+        </section>
+
+        <section class="detail-section" aria-labelledby="reservations-heading">
+          <h3 class="detail-section__heading" id="reservations-heading">Twoje rezerwacje</h3>
+          <p class="detail-section__sub">Okres pakietu: <strong id="period-value"></strong></p>
+          <ol class="reservation-list" id="reservations-list"></ol>
+        </section>
+
+        <section class="detail-section" aria-labelledby="spot-heading">
+          <h3 class="detail-section__heading" id="spot-heading">Miejsce parkingowe</h3>
+          <p class="field-hint" style="margin-bottom:12px">Spróbujemy zarezerwować to samo miejsce na wszystkie weekendy.</p>
+          <div role="radiogroup" aria-label="Preferowane miejsce" id="spot-options">
+            <div class="radio-option radio-option--selected" data-spot-mode="preferred" role="radio" tabindex="0">
+              <div class="radio-option__input" aria-hidden="true"></div>
+              <div class="radio-option__label">Miejsce 12</div>
+            </div>
+            <div class="radio-option" data-spot-mode="pick" role="radio" tabindex="0">
+              <div class="radio-option__input" aria-hidden="true"></div>
+              <div class="radio-option__label">Wybierz inne miejsce</div>
+            </div>
+            <div class="radio-option" data-spot-mode="best" role="radio" tabindex="0">
+              <div class="radio-option__input" aria-hidden="true"></div>
+              <div class="radio-option__label">Wybierz najlepsze dostępne miejsce</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="detail-section" aria-labelledby="price-heading">
+          <h3 class="detail-section__heading" id="price-heading">Cena pakietu</h3>
+          <p style="font-size:2.4rem;font-weight:600;margin:0">160 zł</p>
+          <p class="field-hint">Łącznie za 4 weekendy · 40 zł za weekend</p>
+        </section>
+
+        <!-- Demo: przełącznik wyniku dla review (ukryty na produkcji) -->
+        <details style="margin-top:16px;font-size:1.3rem;color:var(--c-text-subtle)">
+          <summary>Podgląd stanów (dev)</summary>
+          <div class="action-stack">
+            <a class="btn btn--secondary" href="availability-loading.html?result=success">→ Sukces</a>
+            <a class="btn btn--secondary" href="availability-loading.html?result=alternative">→ Alternatywa</a>
+            <a class="btn btn--secondary" href="availability-loading.html?result=unavailable">→ Brak miejsc</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="phone-frame__footer">
+        <button type="button" class="btn btn--primary" id="check-availability">Sprawdź dostępność</button>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="package-details.js"></script>
+</body>
+</html>

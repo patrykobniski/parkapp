@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Warszawska 12 — ParkApp</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame">
+      <div class="status-bar" aria-hidden="true">
+        <span>9:41</span>
+        <span class="status-bar__icons">▮▮▮ WiFi 🔋</span>
+      </div>
+
+      <div class="screen-header">
+        <a href="../../index.html" class="screen-header__back" aria-label="Wróć">←</a>
+        <h1 class="screen-header__title">Szczegóły parkingu</h1>
+      </div>
+
+      <button type="button" class="time-bar" id="time-bar" aria-label="Wybrany termin lub pakiet">
+        <div id="time-bar-regular">
+          <div class="time-bar__range time-bar__range--regular">
+            <span id="time-bar-regular-range">24 lip, 18:00 → 27 lip, 7:00</span>
+          </div>
+        </div>
+        <div id="time-bar-package" hidden>
+          <div class="time-bar__label">Pakiet · 4 weekendy</div>
+          <div class="time-bar__range" id="time-bar-package-range">24 lip – 17 sie</div>
+        </div>
+      </button>
+
+      <div class="phone-frame__scroll">
+        <div class="parking-hero__photos" aria-label="Zdjęcia parkingu">
+          <div class="parking-hero__photo"></div>
+          <div class="parking-hero__photo"></div>
+          <div class="parking-hero__photo"></div>
+        </div>
+
+        <h2 class="parking-hero__name">Parking Warszawska 12</h2>
+        <p class="parking-hero__address">ul. Warszawska 12, Warszawa</p>
+
+        <div class="amenities">
+          <span class="amenity">Na powietrzu</span>
+          <span class="amenity">Strzeżony</span>
+          <span class="amenity">Ładowanie EV</span>
+        </div>
+
+        <div class="standard-offer">
+          <div class="standard-offer__row">
+            <span>Wybrany termin</span>
+            <span id="standard-term-hint">Pt 18:00 – pon 7:00</span>
+          </div>
+          <div class="standard-offer__row">
+            <span>Standardowa cena</span>
+            <span class="standard-offer__price">52 zł</span>
+          </div>
+          <p class="field-hint" style="margin:8px 0 0">Zwykła rezerwacja — jeden ciągły termin.</p>
+        </div>
+
+        <!-- Sekcja A: pakiet cenowy na OBECNY termin -->
+        <p class="section-label">Lepsza stawka na ten termin</p>
+        <div class="section-block">
+          <p class="section-lead" style="padding:0;margin-bottom:12px">Obniż cenę wybranej rezerwacji — dotyczy tylko bieżącego terminu u góry.</p>
+          <article class="pricing-package" id="pricing-package">
+            <div class="pricing-package__head">
+              <div>
+                <div class="pricing-package__title-row">
+                  <h3 class="pricing-package__title">Całodobowy</h3>
+                  <span class="badge badge--popular">Popularny</span>
+                </div>
+              </div>
+              <div class="pricing-package__icon" aria-hidden="true">24h</div>
+            </div>
+            <div class="pricing-package__body">
+              <div class="pricing-package__row">
+                <span class="pricing-package__row-label">🕐 Czas parkowania</span>
+                <span>24h</span>
+              </div>
+              <div class="pricing-package__row">
+                <span class="pricing-package__row-label">💰 Opłata</span>
+                <div>
+                  <div class="pricing-package__price">79,90 zł</div>
+                  <div class="pricing-package__price-sub">Tylko 3,90 zł/h</div>
+                </div>
+              </div>
+            </div>
+            <div class="pricing-package__foot" id="pricing-foot">
+              <button type="button" class="pricing-package__foot-btn" id="apply-pricing">Wybierz pakiet →</button>
+            </div>
+          </article>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Sekcja B: pakiet cykliczny -->
+        <p class="section-label">Parkujesz tutaj regularnie?</p>
+        <div class="section-block">
+          <h2 class="section-title">Wybierz pakiet cykliczny</h2>
+          <p class="section-lead">Zarezerwuj miejsce na kilka kolejnych weekendów w niższej cenie. To osobne rezerwacje — nie jeden ciągły termin.</p>
+
+          <article class="cyclic-package" id="cyclic-package-card" tabindex="0" role="button" aria-pressed="false">
+            <div class="cyclic-package__inner">
+              <div class="cyclic-package__selected-label">
+                <span class="cyclic-package__check" aria-hidden="true">✓</span>
+                Wybrany pakiet
+              </div>
+              <div class="cyclic-package__header">
+                <div>
+                  <h3 class="cyclic-package__name">4 kolejne weekendy</h3>
+                  <span class="badge badge--brand">Najczęściej wybierany</span>
+                </div>
+              </div>
+              <ul class="cyclic-package__meta">
+                <li>Pt 18:00 – pon 7:00</li>
+                <li>4 rezerwacje</li>
+                <li>Okres 28 dni</li>
+              </ul>
+              <div class="cyclic-package__price-row">
+                <div>
+                  <div class="cyclic-package__price">160 zł</div>
+                  <div class="cyclic-package__price-hint">40 zł za weekend · Oszczędzasz 40 zł</div>
+                </div>
+              </div>
+              <button type="button" class="btn btn--secondary cyclic-package__cta" id="cyclic-cta">Zobacz pakiet</button>
+            </div>
+          </article>
+        </div>
+
+        <div style="height:100px"></div>
+      </div>
+
+      <div class="phone-frame__footer">
+        <a href="#" class="btn btn--ghost" id="dismiss-package" style="width:100%;margin-bottom:4px" hidden>Zrezygnuj z pakietu cyklicznego</a>
+        <button type="button" class="btn btn--primary" disabled title="Poza zakresem tego prototypu">Rezerwuj teraz — 52 zł</button>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="parking-detail.js"></script>
+</body>
+</html>

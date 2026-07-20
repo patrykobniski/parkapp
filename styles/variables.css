@@ -1,0 +1,41 @@
+:root {
+  /* Brand — Figma tokens */
+  --c-brand: #023cbb;
+  --c-brand-strong: #072aa6;
+  --c-brand-softer: #eef6ff;
+  --c-brand-subtle: #bedbff;
+  --c-text-fg-brand-strong: #1c398e;
+
+  --c-text: #101828;
+  --c-text-body: #444f60;
+  --c-text-subtle: #505869;
+  --c-text-white: #ffffff;
+
+  --bg-primary: #ffffff;
+  --bg-soft-orange: #f6f2eb;
+  --bg-secondary: #f9fafb;
+  --bg-secondary-strong: #f9fafb;
+  --bg-dark: #1e2939;
+  --bg-success-strong: #006045;
+  --bg-success-soft: #ecfdf5;
+  --bg-warning-soft: #fffbeb;
+  --bg-danger-soft: #fef2f2;
+  --bg-danger: #c70036;
+
+  --b-base: #e5e7eb;
+  --b-base-medium: #e5e7eb;
+  --b-base-strong: #e5e7eb;
+  --b-light-medium: #f3f4f6;
+
+  --radius-sm: 6px;
+  --radius-base: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-xs: 0 1px 0.25px rgba(29, 41, 61, 0.02);
+  --shadow-navbar: 1px -7px 13.4px rgba(0, 0, 0, 0.1);
+
+  --font-base: 'Outfit', system-ui, sans-serif;
+  --transition: 200ms linear;
+  --phone-width: 375px;
+}

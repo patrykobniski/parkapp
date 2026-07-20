@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParkApp — Mapa ekranów (pakiet weekendowy)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hub">
+    <h1>ParkApp — prototyp pakietu</h1>
+    <p>Flow zakupu pakietu „4 kolejne weekendy”. Terminy generowane dynamicznie od dzisiejszej daty.</p>
+
+    <p class="hub__group-title">Główny flow (interaktywny)</p>
+    <ul class="hub__list">
+      <li><a href="screens/parking-detail/">1. Szczegóły parkingu + sekcja pakietów</a></li>
+      <li><a href="screens/package/details.html">2. Szczegóły wybranego pakietu</a></li>
+      <li><a href="screens/package/summary.html">3. Podsumowanie zakupu</a></li>
+      <li><a href="screens/package/confirmation.html">4. Potwierdzenie aktywacji</a></li>
+    </ul>
+
+    <p class="hub__group-title">Stany dostępności (osobne widoki — review)</p>
+    <ul class="hub__list">
+      <li><a href="screens/package/availability-loading.html">Sprawdzanie dostępności…</a></li>
+      <li><a href="screens/package/availability-success.html">Pakiet dostępny</a></li>
+      <li><a href="screens/package/availability-alternative.html">Preferowane miejsce niedostępne</a></li>
+      <li><a href="screens/package/availability-unavailable.html">Brak dostępności pakietu</a></li>
+    </ul>
+
+    <div class="hub__note">
+      <strong>UX — dwa typy pakietów na wizytówce:</strong><br>
+      „Lepsza stawka na ten termin” dotyczy <em>obecnej</em> rezerwacji (np. Całodobowy).
+      „Parkujesz tutaj regularnie?” to osobny produkt cykliczny — nie miesza się z terminem u góry,
+      dopóki użytkownik go nie wybierze (wtedy pasek terminu przełącza się na wariant pakietu).
+    </div>
+  </div>
+</body>
+</html>

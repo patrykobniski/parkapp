@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pakiet aktywowany — ParkApp</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame">
+      <div class="status-bar" aria-hidden="true"><span>9:41</span><span class="status-bar__icons">▮▮▮ WiFi 🔋</span></div>
+      <div class="phone-frame__scroll">
+        <div class="confirm-icon" aria-hidden="true">✓</div>
+        <h1 class="confirm-title">Pakiet został aktywowany</h1>
+        <p class="confirm-lead" id="confirm-lead">Zarezerwowaliśmy dla Ciebie miejsce na cztery kolejne weekendy.</p>
+
+        <div class="summary-block container">
+          <div class="summary-row"><span class="summary-row__label">Okres obowiązywania</span><span class="summary-row__value" id="confirm-period"></span></div>
+          <div class="summary-row"><span class="summary-row__label">Godziny</span><span class="summary-row__value">pt 18:00 – pon 7:00</span></div>
+          <div class="summary-row"><span class="summary-row__label">Rezerwacje</span><span class="summary-row__value">4 weekendy</span></div>
+          <div class="summary-row"><span class="summary-row__label">Parking</span><span class="summary-row__value">Parking Warszawska 12</span></div>
+          <div class="summary-row"><span class="summary-row__label">Miejsce</span><span class="summary-row__value" id="confirm-spot"></span></div>
+          <div class="summary-row summary-row--total"><span class="summary-row__label">Zapłacono</span><span class="summary-row__value">160 zł</span></div>
+        </div>
+      </div>
+      <div class="phone-frame__footer">
+        <a href="../../index.html" class="btn btn--primary">Zobacz moje rezerwacje</a>
+        <a href="../parking-detail/index.html" class="btn btn--secondary">Wróć do mapy</a>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import { renderPackageContext } from './package-shared.js';
+    const { spot, period } = renderPackageContext();
+    document.getElementById('confirm-period').textContent = period;
+    document.getElementById('confirm-spot').textContent = spot;
+    document.getElementById('confirm-lead').textContent =
+      `Zarezerwowaliśmy dla Ciebie ${spot} na cztery kolejne weekendy.`;
+  </script>
+</body>
+</html>

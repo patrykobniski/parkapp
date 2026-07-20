@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprawdzanie dostępności — ParkApp</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame">
+      <div class="status-bar" aria-hidden="true"><span>9:41</span><span class="status-bar__icons">▮▮▮ WiFi 🔋</span></div>
+      <div class="screen-header">
+        <span class="screen-header__back" style="visibility:hidden">←</span>
+        <h1 class="screen-header__title">Dostępność</h1>
+      </div>
+      <div class="phone-frame__scroll container" style="padding-top:24px">
+        <p style="font-size:1.6rem;font-weight:500;margin:0 0 8px" aria-live="polite">Sprawdzamy dostępność miejsca we wszystkich terminach…</p>
+        <p class="field-hint">To może chwilę potrwać.</p>
+        <ul class="check-list" aria-label="Postęp sprawdzania">
+          <li class="check-list__item"><span class="check-list__spinner"></span> Pierwszy weekend — sprawdzanie</li>
+          <li class="check-list__item"><span class="check-list__spinner"></span> Drugi weekend — sprawdzanie</li>
+          <li class="check-list__item"><span class="check-list__spinner"></span> Trzeci weekend — sprawdzanie</li>
+          <li class="check-list__item"><span class="check-list__spinner"></span> Czwarty weekend — sprawdzanie</li>
+        </ul>
+      </div>
+      <div class="phone-frame__footer">
+        <button type="button" class="btn btn--primary" disabled>Sprawdzanie…</button>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="availability-loading.js"></script>
+</body>
+</html>

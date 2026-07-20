@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wybrane miejsce niedostępne — ParkApp</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame">
+      <div class="status-bar" aria-hidden="true"><span>9:41</span><span class="status-bar__icons">▮▮▮ WiFi 🔋</span></div>
+      <div class="screen-header">
+        <a href="details.html" class="screen-header__back" aria-label="Wróć">←</a>
+        <h1 class="screen-header__title">Dostępność</h1>
+      </div>
+      <div class="phone-frame__scroll container">
+        <div class="info-box info-box--warning" role="status">
+          <h2 class="info-box__title">Wybrane miejsce nie jest dostępne</h2>
+          <p class="info-box__text">Miejsce 12 nie jest dostępne podczas wszystkich weekendów. Możemy zarezerwować dla Ciebie <strong>Miejsce 14</strong>.</p>
+        </div>
+        <div class="summary-block">
+          <div class="summary-row"><span class="summary-row__label">Proponowane miejsce</span><span class="summary-row__value">Miejsce 14</span></div>
+          <div class="summary-row"><span class="summary-row__label">Dostępność</span><span class="summary-row__value">4/4 weekendy</span></div>
+        </div>
+      </div>
+      <div class="phone-frame__footer">
+        <button type="button" class="btn btn--primary" id="accept-alt">Wybierz miejsce 14</button>
+        <a href="details.html" class="btn btn--secondary">Zobacz inne miejsca</a>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import { saveState } from '../../scripts/storage.js';
+    import { CYCLIC_PACKAGE } from '../../scripts/mock-data.js';
+    document.getElementById('accept-alt')?.addEventListener('click', () => {
+      saveState({ confirmedSpot: CYCLIC_PACKAGE.alternativeSpot, availabilityResult: 'alternative' });
+      window.location.href = 'summary.html';
+    });
+  </script>
+</body>
+</html>

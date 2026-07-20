@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pakiet niedostępny — ParkApp</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame">
+      <div class="status-bar" aria-hidden="true"><span>9:41</span><span class="status-bar__icons">▮▮▮ WiFi 🔋</span></div>
+      <div class="screen-header">
+        <a href="details.html" class="screen-header__back" aria-label="Wróć">←</a>
+        <h1 class="screen-header__title">Dostępność</h1>
+      </div>
+      <div class="phone-frame__scroll container">
+        <div class="info-box info-box--danger" role="alert">
+          <h2 class="info-box__title">Pakiet nie jest dostępny w wybranym okresie</h2>
+          <p class="info-box__text">Nie znaleźliśmy miejsca dostępnego podczas wszystkich czterech weekendów.</p>
+          <p class="info-box__text" style="margin-top:8px" id="conflict-hint"></p>
+        </div>
+      </div>
+      <div class="phone-frame__footer">
+        <button type="button" class="btn btn--primary" id="delay-week">Rozpocznij pakiet tydzień później</button>
+        <a href="../../index.html" class="btn btn--secondary">Zobacz inne parkingi</a>
+        <a href="../parking-detail/index.html" class="btn btn--ghost" style="width:100%">Wróć do zwykłej rezerwacji</a>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import { renderPackageContext } from './package-shared.js';
+    import { saveState } from '../../scripts/storage.js';
+    const { slots } = renderPackageContext();
+    const conflict = slots[2];
+    if (conflict) {
+      const fmt = (d) => `${d.getDate()}.${d.getMonth() + 1}`;
+      document.getElementById('conflict-hint').textContent =
+        `Brak wolnych miejsc w terminie ${fmt(conflict.start)}–${fmt(conflict.end)}.`;
+    }
+    document.getElementById('delay-week')?.addEventListener('click', () => {
+      saveState({ startMode: 'next' });
+      window.location.href = 'details.html';
+    });
+  </script>
+</body>
+</html>

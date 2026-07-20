@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pakiet jest dostępny — ParkApp</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame">
+      <div class="status-bar" aria-hidden="true"><span>9:41</span><span class="status-bar__icons">▮▮▮ WiFi 🔋</span></div>
+      <div class="screen-header">
+        <a href="details.html" class="screen-header__back" aria-label="Wróć">←</a>
+        <h1 class="screen-header__title">Dostępność</h1>
+      </div>
+      <div class="phone-frame__scroll container">
+        <div class="info-box info-box--success" role="status">
+          <h2 class="info-box__title">Pakiet jest dostępny</h2>
+          <p class="info-box__text" id="success-message">Miejsce 12 jest dostępne podczas wszystkich czterech weekendów.</p>
+        </div>
+        <div class="summary-block" id="success-summary">
+          <div class="summary-row"><span class="summary-row__label">Weekendy</span><span class="summary-row__value">4</span></div>
+          <div class="summary-row"><span class="summary-row__label">Godziny</span><span class="summary-row__value">pt 18:00 – pon 7:00</span></div>
+          <div class="summary-row"><span class="summary-row__label">Okres</span><span class="summary-row__value" id="success-period"></span></div>
+          <div class="summary-row"><span class="summary-row__label">Miejsce</span><span class="summary-row__value" id="success-spot"></span></div>
+          <div class="summary-row summary-row--total"><span class="summary-row__label">Cena</span><span class="summary-row__value">160 zł</span></div>
+        </div>
+      </div>
+      <div class="phone-frame__footer">
+        <a href="summary.html" class="btn btn--primary">Przejdź do podsumowania</a>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import { renderPackageContext } from './package-shared.js';
+    import { saveState } from '../../scripts/storage.js';
+    const { spot, period } = renderPackageContext();
+    saveState({ availabilityResult: 'success', confirmedSpot: spot });
+    document.getElementById('success-period').textContent = period;
+    document.getElementById('success-spot').textContent = spot;
+    document.getElementById('success-message').textContent =
+      `${spot} jest dostępne podczas wszystkich czterech weekendów.`;
+  </script>
+</body>
+</html>
