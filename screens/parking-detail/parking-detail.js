@@ -12,12 +12,6 @@ function renderTimeBar() {
   }
 }
 
-function renderCyclicCard() {
-  const card = document.getElementById('cyclic-package-card');
-  card.classList.remove('cyclic-package--selected');
-  card.setAttribute('aria-pressed', 'false');
-}
-
 function renderPricingCard() {
   const card = document.getElementById('pricing-package');
   card.classList.toggle('pricing-package--applied', state.pricingPackageApplied);
@@ -30,7 +24,6 @@ function renderPricingCard() {
       e.stopPropagation();
       state = saveState({ pricingPackageApplied: true, packageSelected: false, packageId: null });
       renderPricingCard();
-      renderCyclicCard();
     });
   }
 }
@@ -46,5 +39,4 @@ document.getElementById('cyclic-cta')?.addEventListener('click', (e) => {
 });
 
 renderTimeBar();
-renderCyclicCard();
 renderPricingCard();

@@ -104,6 +104,12 @@
 
 .btn--secondary:hover { background: var(--bg-secondary); }
 
+.btn--sm {
+  min-height: 36px;
+  padding: 8px 12px;
+  font-size: 1.4rem;
+}
+
 .btn--ghost {
   background: transparent;
   color: var(--c-brand-strong);
