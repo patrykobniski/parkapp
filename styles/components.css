@@ -54,24 +54,7 @@
   background: var(--bg-secondary);
   border: 1px solid var(--b-base);
   border-radius: var(--radius-base);
-  cursor: pointer;
-  transition: border-color var(--transition), box-shadow var(--transition);
   min-height: 44px;
-}
-
-.time-bar:hover { border-color: var(--c-brand-subtle); }
-.time-bar:focus-visible { outline: 2px solid var(--c-brand); outline-offset: 2px; }
-
-.time-bar--package {
-  background: var(--c-brand-softer);
-  border-color: var(--c-brand-subtle);
-}
-
-.time-bar__label {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--c-brand-strong);
-  margin-bottom: 4px;
 }
 
 .time-bar__range {
@@ -86,8 +69,6 @@
   gap: 8px;
   flex-wrap: wrap;
 }
-
-.time-bar__arrow { color: var(--c-text-subtle); font-size: 1.2rem; }
 
 /* Buttons */
 .btn {
