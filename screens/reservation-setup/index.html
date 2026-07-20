@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ustaw czas — ParkApp</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame phone-frame--map">
+      <div class="status-bar" aria-hidden="true">
+        <span>9:41</span>
+        <span class="status-bar__icons">▮▮▮ WiFi 🔋</span>
+      </div>
+
+      <div class="map-placeholder" aria-hidden="true">
+        <span class="map-placeholder__pin">P</span>
+      </div>
+
+      <div class="bottom-sheet reservation-setup" role="dialog" aria-labelledby="setup-title">
+        <div class="bottom-sheet__handle" aria-hidden="true"></div>
+
+        <a href="../../index.html" class="reservation-setup__back">
+          <span aria-hidden="true">←</span>
+          <span id="setup-title">Ustaw czas</span>
+        </a>
+
+        <div class="reservation-setup__tabs" role="tablist" aria-label="Tryb rezerwacji">
+          <button type="button" class="reservation-setup__tab reservation-setup__tab--active" role="tab" aria-selected="true" data-mode="hours">Godziny</button>
+          <button type="button" class="reservation-setup__tab" role="tab" aria-selected="false" data-mode="days" disabled title="Poza zakresem prototypu">Doby</button>
+        </div>
+
+        <div class="reservation-setup__summary">
+          <p class="reservation-setup__summary-label">Czas parkowania</p>
+          <p class="reservation-setup__summary-value" id="duration-display">61h</p>
+          <p class="reservation-setup__summary-hint" id="range-display">24 lip, 18:00 → 27 lip, 7:00</p>
+        </div>
+
+        <p class="reservation-setup__divider">Na ile godzin parkujesz?</p>
+
+        <div class="reservation-setup__presets" role="radiogroup" aria-label="Długość parkowania">
+          <label class="duration-pill">
+            <input type="radio" name="preset" value="weekend" checked>
+            <span class="duration-pill__label">Weekend</span>
+            <span class="duration-pill__hint">pt 18:00 → pon 7:00</span>
+          </label>
+          <label class="duration-pill">
+            <input type="radio" name="preset" value="24h">
+            <span class="duration-pill__label">24h</span>
+            <span class="duration-pill__hint">Cała doba</span>
+          </label>
+          <label class="duration-pill">
+            <input type="radio" name="preset" value="6h">
+            <span class="duration-pill__label">6h</span>
+            <span class="duration-pill__hint">Krótki postój</span>
+          </label>
+        </div>
+
+        <p class="field-hint reservation-setup__note">
+          Ten termin zobaczysz u góry wizytówki parkingu. Pakiet cykliczny to osobny produkt — możesz z niego zrezygnować i wrócić do tego terminu.
+        </p>
+
+        <a href="../parking-detail/" class="btn btn--primary" id="continue-btn">Dalej — wybierz parking</a>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="reservation-setup.js"></script>
+</body>
+</html>

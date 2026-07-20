@@ -14,6 +14,10 @@ const KEY = 'parkapp_package_state';
  *   availabilityResult: 'success'|'alternative'|'unavailable'|null,
  *   confirmedSpot: string|null,
  *   pricingPackageApplied: boolean,
+ *   reservationStart: string|null,
+ *   reservationEnd: string|null,
+ *   reservationDurationLabel: string|null,
+ *   reservationPreset: 'weekend'|'24h'|'6h'|null,
  * }} PackageState
  */
 
@@ -29,6 +33,10 @@ export function getDefaultState() {
     availabilityResult: null,
     confirmedSpot: null,
     pricingPackageApplied: false,
+    reservationStart: null,
+    reservationEnd: null,
+    reservationDurationLabel: null,
+    reservationPreset: null,
   };
 }
 

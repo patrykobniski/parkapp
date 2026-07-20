@@ -4,11 +4,11 @@ import {
 } from '../../scripts/storage.js';
 import {
   resolvePackageStart, generateWeekendSlots, formatRegularBar,
-  formatPackageBar, getRegularTimeRange,
+  formatPackageBar, getReservationRange,
 } from '../../scripts/package-dates.js';
 
 const state = loadState();
-const regularRange = getRegularTimeRange();
+const regularRange = getReservationRange(state);
 
 function renderTimeBar() {
   const bar = document.getElementById('time-bar');
@@ -60,6 +60,8 @@ function renderPricingCard() {
 document.getElementById('time-bar')?.addEventListener('click', () => {
   if (state.packageSelected) {
     navTo('../package/details.html');
+  } else {
+    navTo('../reservation-setup/');
   }
 });
 
@@ -86,7 +88,7 @@ document.getElementById('cyclic-cta')?.addEventListener('click', (e) => {
 
 document.getElementById('dismiss-package')?.addEventListener('click', (e) => {
   e.preventDefault();
-  saveState({ packageSelected: false, packageId: null });
+  Object.assign(state, saveState({ packageSelected: false, packageId: null }));
   renderTimeBar();
   renderCyclicCard();
 });

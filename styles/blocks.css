@@ -395,3 +395,199 @@
   gap: 8px;
   margin-top: 16px;
 }
+
+/* Map + reservation setup (Figma: 1.0.0 Start - Ustaw czas) */
+.phone-frame--map {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-placeholder {
+  position: absolute;
+  inset: 44px 0 0;
+  background:
+    linear-gradient(180deg, rgba(246, 242, 235, 0.3) 0%, rgba(246, 242, 235, 0.85) 100%),
+    repeating-linear-gradient(0deg, var(--b-base) 0, var(--b-base) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(90deg, var(--b-base) 0, var(--b-base) 1px, transparent 1px, transparent 32px),
+    var(--bg-soft-orange);
+}
+
+.map-placeholder__pin {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50% 50% 50% 0;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  background: var(--c-brand);
+  color: var(--c-text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  box-shadow: var(--shadow-xs);
+}
+
+.bottom-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: 0 -11px 8px rgba(0, 0, 0, 0.05);
+  padding: 8px 16px 24px;
+  z-index: 2;
+}
+
+.bottom-sheet__handle {
+  width: 67px;
+  height: 4px;
+  margin: 0 auto 16px;
+  background: var(--b-base);
+  border-radius: 4px;
+}
+
+.reservation-setup__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--c-text);
+  margin-bottom: 20px;
+}
+
+.reservation-setup__tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.reservation-setup__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--b-base);
+  background: var(--bg-primary);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--c-text);
+}
+
+.reservation-setup__tab--active {
+  background: var(--c-brand-softer);
+  border-color: var(--c-brand-subtle);
+  color: var(--c-text-fg-brand-strong);
+}
+
+.reservation-setup__tab:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.reservation-setup__summary {
+  background: var(--bg-secondary);
+  border: 1px solid var(--b-base);
+  border-radius: var(--radius-base);
+  padding: 10px 12px;
+  margin-bottom: 20px;
+}
+
+.reservation-setup__summary-label {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--c-brand);
+  margin: 0 0 6px;
+}
+
+.reservation-setup__summary-value {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 0 4px;
+}
+
+.reservation-setup__summary-hint {
+  font-size: 1.4rem;
+  color: var(--c-text-subtle);
+  margin: 0;
+}
+
+.reservation-setup__divider {
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--c-text);
+  margin: 0 0 12px;
+  position: relative;
+}
+
+.reservation-setup__divider::before,
+.reservation-setup__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 28%;
+  height: 1px;
+  background: var(--b-base);
+}
+
+.reservation-setup__divider::before { left: 0; }
+.reservation-setup__divider::after { right: 0; }
+
+.reservation-setup__presets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.duration-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 72px;
+  padding: 10px 6px;
+  border: 1px solid var(--b-base);
+  border-radius: var(--radius-base);
+  background: var(--bg-primary);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.duration-pill input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.duration-pill--active,
+.duration-pill:has(input:checked) {
+  border-color: var(--c-brand);
+  background: var(--c-brand-softer);
+}
+
+.duration-pill__label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.duration-pill__hint {
+  font-size: 1.1rem;
+  color: var(--c-text-subtle);
+  line-height: 1.3;
+}
+
+.reservation-setup__note {
+  margin: 0 0 16px;
+}
+

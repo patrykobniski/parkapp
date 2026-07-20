@@ -40,10 +40,13 @@ Po włączeniu Pages (branch `main`, folder `/`) prototyp dostępny pod:
 
 ## Flow
 
-1. **Szczegóły parkingu** — zwykła rezerwacja + pakiet cenowy (Całodobowy) + pakiet cykliczny
+0. **Ustaw czas** — mapa + bottom sheet (termin zwykłej rezerwacji)
+1. **Szczegóły parkingu** — zwykła rezerwacja + pakiet cenowy + pakiet cykliczny
 2. **Szczegóły pakietu** — wybór startu, lista 4 terminów, miejsce, sprawdzenie dostępności
 3. **Stany dostępności** — loading / sukces / alternatywa / brak miejsc
 4. **Podsumowanie** → **Potwierdzenie**
+
+„Zrezygnuj z pakietu cyklicznego” na wizytówce przywraca termin z kroku 0.
 
 Terminy generowane dynamicznie (`scripts/package-dates.js`). Stan flow w `sessionStorage`.
 
