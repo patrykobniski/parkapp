@@ -138,69 +138,80 @@
 .cyclic-package:hover { border-color: var(--c-brand-subtle); }
 
 .cyclic-package__inner {
-  padding: 12px 14px;
+  padding: 16px;
 }
 
 .cyclic-package__head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 6px;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
 .cyclic-package__name {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 600;
   margin: 0;
+  line-height: 1.25;
 }
 
 .cyclic-package__desc {
-  font-size: 1.3rem;
-  line-height: 1.45;
-  color: var(--c-text-body);
-  margin: 0 0 8px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--c-text-subtle);
+  margin: 0 0 14px;
 }
 
-.cyclic-package__tags {
+.cyclic-package__details {
+  margin: 0 0 16px;
+  padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.cyclic-package__tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 8px;
+.cyclic-package__detail {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--b-base);
+  border-radius: var(--radius-base);
+}
+
+.cyclic-package__detail dt {
+  margin: 0;
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--c-text-subtle);
-  background: var(--bg-secondary);
-  border: 1px solid var(--b-base);
-  border-radius: var(--radius-sm);
-  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cyclic-package__detail dd {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--c-text);
+  text-align: right;
 }
 
 .cyclic-package__foot {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--b-base);
+  flex-direction: column;
+  gap: 12px;
 }
 
 .cyclic-package__price-block {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  min-width: 0;
+  gap: 4px;
 }
 
 .cyclic-package__price {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 600;
   line-height: 1.1;
 }
@@ -208,14 +219,10 @@
 .cyclic-package__price-hint {
   font-size: 1.2rem;
   color: var(--c-text-subtle);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .cyclic-package__cta {
-  flex-shrink: 0;
-  min-width: 112px;
+  width: 100%;
 }
 
 /* Parking hero */

@@ -48,7 +48,7 @@ export const ACCOUNT_VEHICLES = [
 ];
 
 export const VEHICLE_PACKAGE_NOTE =
-  'Na tym parkingu możesz parkować dowolnym pojazdem dodanym do konta. Nie musisz wybierać konkretnego auta przy zakupie pakietu — wystarczy, że jest przypisany do Twojego profilu.';
+  'Na tym parkingu możesz parkować dowolnym pojazdem dodanym do konta. Nie musisz wybierać konkretnego auta przy zakupie pakietu. Wystarczy, że jest przypisany do Twojego profilu.';
 
 export function formatVehicleLine(vehicle) {
   return `${vehicle.label} · ${vehicle.plate}`;
