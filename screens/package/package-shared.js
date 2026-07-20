@@ -2,7 +2,7 @@ import { loadState, saveState, navTo } from '../../scripts/storage.js';
 import {
   resolvePackageStart, generateWeekendSlots, formatPeriod, formatSlotRange,
 } from '../../scripts/package-dates.js';
-import { CYCLIC_PACKAGE, PARKING, ACCOUNT_VEHICLES } from '../../scripts/mock-data.js';
+import { CYCLIC_PACKAGE, PARKING } from '../../scripts/mock-data.js';
 
 export function renderPackageContext() {
   const state = loadState();
@@ -17,17 +17,6 @@ export function fillReservationsList(containerId) {
   const el = document.getElementById(containerId);
   if (!el) return;
   el.innerHTML = slots.map((s) => `<li class="reservation-list__item"><span class="reservation-list__num">${s.index}</span><span>${formatSlotRange(s)}</span></li>`).join('');
-}
-
-function renderVehicleList(containerId) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
-  el.innerHTML = ACCOUNT_VEHICLES.map((vehicle) => `
-    <li class="vehicles-panel__item">
-      <span class="vehicles-panel__item-name">${vehicle.label}</span>
-      <span class="vehicles-panel__item-plate">${vehicle.plate}</span>
-    </li>
-  `).join('');
 }
 
 export function fillSummaryRows() {
@@ -47,11 +36,6 @@ export function fillSummaryRows() {
     const node = document.getElementById(id);
     if (node) node.textContent = text;
   });
-
-  const spotLabel = document.getElementById('summary-vehicle-spot');
-  if (spotLabel) spotLabel.textContent = spot;
-
-  renderVehicleList('summary-vehicles-list');
 
   return { slots, spot, period };
 }

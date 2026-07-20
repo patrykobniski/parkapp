@@ -18,38 +18,27 @@
         <h2 class="section-title" id="summary-package">Pakiet: 4 kolejne weekendy</h2>
 
         <div class="summary-block">
-          <div class="summary-row"><span class="summary-row__label">Okres</span><span class="summary-row__value" id="summary-period"></span></div>
+          <div class="summary-row">
+            <span class="summary-row__label">Okres</span>
+            <span class="summary-row__value" id="summary-period"></span>
+          </div>
+          <div class="summary-period-extra">
+            <button type="button" class="link-text link-text--sm" id="toggle-terms" aria-expanded="false" aria-controls="summary-terms-list">
+              Zobacz terminy
+            </button>
+            <ol class="reservation-list summary-terms-list" id="summary-terms-list" hidden></ol>
+          </div>
+
           <div class="summary-row"><span class="summary-row__label">Godziny</span><span class="summary-row__value" id="summary-hours"></span></div>
           <div class="summary-row"><span class="summary-row__label">Liczba rezerwacji</span><span class="summary-row__value" id="summary-count"></span></div>
           <div class="summary-row"><span class="summary-row__label">Miejsce</span><span class="summary-row__value" id="summary-spot"></span></div>
           <div class="summary-row"><span class="summary-row__label">Parking</span><span class="summary-row__value" id="summary-parking"></span></div>
           <div class="summary-row"><span class="summary-row__label">Adres</span><span class="summary-row__value" id="summary-address"></span></div>
-
-          <div class="summary-vehicles-panel vehicles-panel">
-            <div class="summary-row summary-row--inline">
-              <span class="summary-row__label">Pojazdy</span>
-              <span class="summary-row__value" id="summary-vehicles">Dowolny z konta</span>
-            </div>
-            <p class="vehicles-panel__lead" id="summary-vehicles-lead">
-              Parkuj dowolnym pojazdem dodanym do konta na
-              <strong id="summary-vehicle-spot">Miejsce 12</strong>.
-              Nie wybierasz auta przy zakupie pakietu.
-            </p>
-            <button type="button" class="link-text vehicles-panel__toggle" id="toggle-summary-vehicles" aria-expanded="false" aria-controls="summary-vehicles-list-wrap">
-              Zobacz dodane pojazdy
-            </button>
-            <div class="vehicles-panel__list" id="summary-vehicles-list-wrap" hidden>
-              <p class="vehicles-panel__list-note">Wszystkie pojazdy dodane na Twoim koncie:</p>
-              <ul class="vehicles-panel__items" id="summary-vehicles-list" aria-label="Pojazdy przypisane do konta"></ul>
-            </div>
-          </div>
-
+          <div class="summary-row"><span class="summary-row__label">Pojazdy</span><span class="summary-row__value" id="summary-vehicles">Dowolny z konta</span></div>
+          <p class="field-hint summary-row-hint">Każdy pojazd dodany do konta.</p>
           <div class="summary-row"><span class="summary-row__label">Płatność</span><span class="summary-row__value">BLIK</span></div>
           <div class="summary-row summary-row--total"><span class="summary-row__label">Cena całkowita</span><span class="summary-row__value" id="summary-price"></span></div>
         </div>
-
-        <button type="button" class="link-text" id="toggle-terms" aria-expanded="false">Zobacz wszystkie terminy</button>
-        <ol class="reservation-list" id="summary-terms-list" hidden style="margin-top:12px"></ol>
       </div>
       <div class="phone-frame__footer">
         <a href="confirmation.html" class="btn btn--primary" id="buy-package">Kup pakiet za 160 zł</a>
@@ -69,17 +58,7 @@
       const open = list.hidden;
       list.hidden = !open;
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.textContent = open ? 'Ukryj terminy' : 'Zobacz wszystkie terminy';
-    });
-
-    const toggleVehiclesBtn = document.getElementById('toggle-summary-vehicles');
-    const vehiclesListWrap = document.getElementById('summary-vehicles-list-wrap');
-
-    toggleVehiclesBtn?.addEventListener('click', () => {
-      const open = vehiclesListWrap?.hidden;
-      if (vehiclesListWrap) vehiclesListWrap.hidden = !open;
-      toggleVehiclesBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggleVehiclesBtn.textContent = open ? 'Ukryj pojazdy' : 'Zobacz dodane pojazdy';
+      btn.textContent = open ? 'Ukryj terminy' : 'Zobacz terminy';
     });
   </script>
 </body>

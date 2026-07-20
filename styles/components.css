@@ -320,18 +320,20 @@
   border-bottom: none;
 }
 
-.summary-row--inline {
-  padding-top: 0;
-  border-bottom: none;
+.summary-period-extra {
+  margin: -4px 0 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--b-light-medium);
 }
 
-.summary-vehicles-panel {
-  margin: 8px 0 12px;
-  padding: 12px 14px;
+.summary-terms-list {
+  margin-top: 10px;
 }
 
-.summary-vehicles-panel .vehicles-panel__lead {
-  margin-top: 8px;
+.summary-row-hint {
+  margin: -4px 0 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--b-light-medium);
 }
 
 .link-text {
@@ -342,6 +344,21 @@
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+}
+
+.link-text--sm {
+  font-size: 1.2rem;
+  min-height: 32px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.link-text--sm:hover { color: var(--c-brand); }
+.link-text--sm:focus-visible {
+  outline: 2px solid var(--c-brand);
+  outline-offset: 2px;
 }
 
 /* Loading checklist */
